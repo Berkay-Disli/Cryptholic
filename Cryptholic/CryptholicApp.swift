@@ -11,7 +11,8 @@ import SwiftUI
 struct CryptholicApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabManager()
+                .environmentObject(NavigationViewModel())
         }
     }
 }

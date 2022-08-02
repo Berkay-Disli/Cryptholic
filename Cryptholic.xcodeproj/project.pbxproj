@@ -11,6 +11,9 @@
 		234064E528992D8D00DB9E7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064E428992D8D00DB9E7F /* ContentView.swift */; };
 		234064E728992D8E00DB9E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234064E628992D8E00DB9E7F /* Assets.xcassets */; };
 		234064EA28992D8E00DB9E7F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234064E928992D8E00DB9E7F /* Preview Assets.xcassets */; };
+		234064F528992ECD00DB9E7F /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064F428992ECD00DB9E7F /* TabManager.swift */; };
+		234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064F728992FAB00DB9E7F /* NavigationTabs.swift */; };
+		234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064FA289936FA00DB9E7F /* NavigationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		234064E428992D8D00DB9E7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		234064E628992D8E00DB9E7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		234064E928992D8E00DB9E7F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		234064F428992ECD00DB9E7F /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
+		234064F728992FAB00DB9E7F /* NavigationTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabs.swift; sourceTree = "<group>"; };
+		234064FA289936FA00DB9E7F /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,10 @@
 		234064E128992D8D00DB9E7F /* Cryptholic */ = {
 			isa = PBXGroup;
 			children = (
+				234064F328992E0500DB9E7F /* Utils */,
+				234064F228992DF500DB9E7F /* Model */,
+				234064F128992DF100DB9E7F /* ViewModel */,
+				234064F028992DEF00DB9E7F /* View */,
 				234064E228992D8D00DB9E7F /* CryptholicApp.swift */,
 				234064E428992D8D00DB9E7F /* ContentView.swift */,
 				234064E628992D8E00DB9E7F /* Assets.xcassets */,
@@ -65,6 +75,53 @@
 				234064E928992D8E00DB9E7F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		234064F028992DEF00DB9E7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				234064F428992ECD00DB9E7F /* TabManager.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		234064F128992DF100DB9E7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				234064F9289936ED00DB9E7F /* Navigation */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		234064F228992DF500DB9E7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				234064F628992F9800DB9E7F /* Navigation */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		234064F328992E0500DB9E7F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		234064F628992F9800DB9E7F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				234064F728992FAB00DB9E7F /* NavigationTabs.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		234064F9289936ED00DB9E7F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				234064FA289936FA00DB9E7F /* NavigationViewModel.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +195,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				234064E528992D8D00DB9E7F /* ContentView.swift in Sources */,
+				234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */,
+				234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */,
 				234064E328992D8D00DB9E7F /* CryptholicApp.swift in Sources */,
+				234064F528992ECD00DB9E7F /* TabManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
