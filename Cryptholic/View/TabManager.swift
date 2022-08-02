@@ -19,11 +19,7 @@ struct TabManager: View {
             
             switch navVM.tabSelection {
             case .home:
-                VStack {
-                    Spacer()
-                    Text("Home")
-                    Spacer()
-                }
+                Home()
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             case .coins:
                 VStack {
@@ -63,6 +59,7 @@ struct TabManager: View {
                         Spacer()
                     }
                 }
+                .padding(.top, 4)
                 .frame(height: 100, alignment: .top)
                 .background(.white)
             }

@@ -10,11 +10,14 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-            Spacer()
+            List {
+                ForEach(1...3, id:\.self) { item in
+                    HStack {
+                        Image(systemName: "house")
+                    }
+                }
+            }
+            .listStyle(.plain)
         }
     }
 }
@@ -22,5 +25,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(NavigationViewModel())
     }
 }
