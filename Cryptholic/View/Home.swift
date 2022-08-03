@@ -21,7 +21,7 @@ struct Home: View {
                             .padding()
                         VStack {
                             ForEach(coinsVM.coins.coins.prefix(3), id:\.self) { item in
-                                CoinListCell(showGraph: true, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
                             }
                         }
                         .padding(.horizontal)
@@ -37,7 +37,7 @@ struct Home: View {
                             .padding()
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
-                                ForEach(coinsVM.coins.coins.sorted{$0.priceChange1d ?? 0 > $1.priceChange1d ?? 0}.prefix(5), id:\.self) { item in
+                                ForEach(coinsVM.coins.coins.sorted{fabs($0.priceChange1d ?? 0) > fabs($1.priceChange1d ?? 0)}.prefix(5), id:\.self) { item in
                                     TopMoversCell(icon: item.icon, name: item.name, symbol: item.symbol, price: item.price, priceChange: item.priceChange1d ?? 0)
                                 }
                                 .padding(.horizontal, 2)

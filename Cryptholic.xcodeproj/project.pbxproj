@@ -22,6 +22,7 @@
 		234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064F728992FAB00DB9E7F /* NavigationTabs.swift */; };
 		234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064FA289936FA00DB9E7F /* NavigationViewModel.swift */; };
 		234064FD28993FC300DB9E7F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064FC28993FC300DB9E7F /* Home.swift */; };
+		23864596289B1F520086A2DC /* cryptholic.png in Resources */ = {isa = PBXBuildFile; fileRef = 23864595289B1F520086A2DC /* cryptholic.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		234064F728992FAB00DB9E7F /* NavigationTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabs.swift; sourceTree = "<group>"; };
 		234064FA289936FA00DB9E7F /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		234064FC28993FC300DB9E7F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		23864593289B16420086A2DC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		23864595289B1F520086A2DC /* cryptholic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cryptholic.png; path = ../../../../Downloads/cryptholic.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 		234064D628992D8D00DB9E7F = {
 			isa = PBXGroup;
 			children = (
+				23864593289B16420086A2DC /* README.md */,
+				23864594289B18900086A2DC /* images */,
 				234064E128992D8D00DB9E7F /* Cryptholic */,
 				234064E028992D8D00DB9E7F /* Products */,
 			);
@@ -171,6 +176,14 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		23864594289B18900086A2DC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				23864595289B1F520086A2DC /* cryptholic.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23864596289B1F520086A2DC /* cryptholic.png in Resources */,
 				234064EA28992D8E00DB9E7F /* Preview Assets.xcassets in Resources */,
 				234064E728992D8E00DB9E7F /* Assets.xcassets in Resources */,
 			);

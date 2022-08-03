@@ -52,7 +52,6 @@ struct CoinsPage: View {
                     Image(systemName: "arrow.clockwise")
                         .onTapGesture {
                             coinsVM.getData()
-                            print("It works.")
                         }
                 }
             }
