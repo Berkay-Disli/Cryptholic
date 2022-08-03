@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Home: View {
+    @ObservedObject var coinsVM: CoinsViewModel
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -18,8 +20,8 @@ struct Home: View {
                             .font(.title2).fontWeight(.medium)
                             .padding()
                         VStack {
-                            ForEach(1...3, id:\.self) { _ in
-                                CoinListCell(showGraph: true, image: "bitcoinsign.circle.fill", name: "Bitcoin", symbol: "BTC", price: 40981.51, dailyChange: 5.96)
+                            ForEach(coinsVM.coins.coins.prefix(3), id:\.self) { item in
+                                CoinListCell(showGraph: true, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
                             }
                         }
                         .padding(.horizontal)
@@ -35,7 +37,7 @@ struct Home: View {
                             .padding()
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
-                                ForEach(1...4, id:\.self) { _ in
+                                ForEach(coinsVM.coins.coins, id:\.self) { item in
                                     VStack(spacing: 8) {
                                         HStack {
                                             Image(systemName: "bitcoinsign.circle.fill")
@@ -139,6 +141,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Home(coinsVM: CoinsViewModel())
     }
 }

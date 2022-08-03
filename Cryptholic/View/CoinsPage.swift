@@ -14,12 +14,12 @@ struct CoinsPage: View {
     var body: some View {
         NavigationView {
             VStack {
-                
                 ScrollView {
                     if searchText.isEmpty {
                         LazyVStack {
                             ForEach(coinsVM.coins.coins, id:\.self) { item in
-                                CoinListCell(showGraph: false, image: "bitcoinsign.circle.fill", name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                    .padding(.bottom, 14)
                             }
                         }
                         .padding(.horizontal)
@@ -27,7 +27,7 @@ struct CoinsPage: View {
                     } else {
                         LazyVStack {
                             ForEach(coinsVM.coins.coins.filter { $0.name.contains(searchText)}, id:\.self) { item in
-                                CoinListCell(showGraph: false, image: "bitcoinsign.circle.fill", name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
                             }
                         }
                         .padding(.horizontal)

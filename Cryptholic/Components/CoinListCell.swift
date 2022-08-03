@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CoinListCell: View {
     let showGraph: Bool
@@ -17,9 +18,10 @@ struct CoinListCell: View {
     
     var body: some View {
         HStack {
-            Image(systemName: image)
-                .foregroundColor(.orange)
-                .font(.system(size: 45))
+            KFImage(URL(string: image))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 45, height: 45)
             VStack(alignment: .leading, spacing: 4) {
                 Text(name)
                     .fontWeight(.medium)
@@ -32,14 +34,20 @@ struct CoinListCell: View {
             if showGraph {
                 Image(systemName: "chart.line.uptrend.xyaxis")
                     .font(.system(size: 35))
+                    
             }
             
             Spacer()
             
             VStack(alignment: .trailing, spacing: 4) {
                 Text("USD \(price.formatted())")
-                Text("\(dailyChange.formatted())%")
-                    .foregroundColor(dailyChange >= 0 ? .green:.red)
+                    .lineLimit(1)
+                HStack(spacing: 4) {
+                    Image(systemName: dailyChange >= 0 ? "arrow.up.right": "arrow.down.right")
+                        .font(.footnote)
+                    Text("\(dailyChange.formatted())%")
+                }
+                .foregroundColor(dailyChange >= 0 ? .green:.red)
             }
             
         }
@@ -49,6 +57,6 @@ struct CoinListCell: View {
 
 struct CoinListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CoinListCell(showGraph: false, image: "bitcoinsign.circle.fill", name: "Bitcoin", symbol: "BTC", price: 40981.51, dailyChange: 15.26)
+        CoinListCell(showGraph: true, image: "https://static.coinstats.app/coins/1650455588819.png", name: "Bitcoin", symbol: "BTC", price: 40981.51, dailyChange: 15.26)
     }
 }

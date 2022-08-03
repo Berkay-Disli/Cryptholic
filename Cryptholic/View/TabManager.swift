@@ -19,7 +19,7 @@ struct TabManager: View {
             
             switch navVM.tabSelection {
             case .home:
-                Home()
+                Home(coinsVM: coinsVM)
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             case .coins:
                 CoinsPage(coinsVM: coinsVM)
