@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DDB289A63BB00B93757 /* CoinsPage.swift */; };
+		23242DE1289A641D00B93757 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DE0289A641D00B93757 /* Coins.swift */; };
+		23242DE4289A64FE00B93757 /* CoinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DE3289A64FE00B93757 /* CoinsViewModel.swift */; };
 		234064E328992D8D00DB9E7F /* CryptholicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064E228992D8D00DB9E7F /* CryptholicApp.swift */; };
 		234064E528992D8D00DB9E7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064E428992D8D00DB9E7F /* ContentView.swift */; };
 		234064E728992D8E00DB9E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234064E628992D8E00DB9E7F /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23242DDB289A63BB00B93757 /* CoinsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsPage.swift; sourceTree = "<group>"; };
+		23242DE0289A641D00B93757 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
+		23242DE3289A64FE00B93757 /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
 		234064DF28992D8D00DB9E7F /* Cryptholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptholic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		234064E228992D8D00DB9E7F /* CryptholicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptholicApp.swift; sourceTree = "<group>"; };
 		234064E428992D8D00DB9E7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +46,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23242DDF289A63F500B93757 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				23242DE0289A641D00B93757 /* Coins.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		23242DE2289A64EB00B93757 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				23242DE3289A64FE00B93757 /* CoinsViewModel.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		234064D628992D8D00DB9E7F = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +106,7 @@
 			children = (
 				234064F428992ECD00DB9E7F /* TabManager.swift */,
 				234064FC28993FC300DB9E7F /* Home.swift */,
+				23242DDB289A63BB00B93757 /* CoinsPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -91,6 +114,7 @@
 		234064F128992DF100DB9E7F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				23242DE2289A64EB00B93757 /* Data */,
 				234064F9289936ED00DB9E7F /* Navigation */,
 			);
 			path = ViewModel;
@@ -99,6 +123,7 @@
 		234064F228992DF500DB9E7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				23242DDF289A63F500B93757 /* Data */,
 				234064F628992F9800DB9E7F /* Navigation */,
 			);
 			path = Model;
@@ -198,6 +223,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				234064E528992D8D00DB9E7F /* ContentView.swift in Sources */,
+				23242DE4289A64FE00B93757 /* CoinsViewModel.swift in Sources */,
+				23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */,
+				23242DE1289A641D00B93757 /* Coins.swift in Sources */,
 				234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */,
 				234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */,
 				234064E328992D8D00DB9E7F /* CryptholicApp.swift in Sources */,

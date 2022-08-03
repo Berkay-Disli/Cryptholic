@@ -11,7 +11,7 @@ import SwiftUI
 // Yet I find it beneficial to create a custom one to be able to customize it however I'd like.
 
 struct TabManager: View {
-    
+    @StateObject var coinsVM = CoinsViewModel()
     @EnvironmentObject var navVM: NavigationViewModel
     
     var body: some View {
@@ -22,11 +22,7 @@ struct TabManager: View {
                 Home()
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             case .coins:
-                VStack {
-                    Spacer()
-                    Text("Coins")
-                    Spacer()
-                }
+                CoinsPage(coinsVM: coinsVM)
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             case .profile:
                 VStack {
