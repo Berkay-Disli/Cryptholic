@@ -9,6 +9,7 @@ import Foundation
 
 class CoinsViewModel: ObservableObject {
     @Published var coins = Coins(coins: [Coin]())
+    @Published var coinNames = [String]()
     
     init() {
         getData()

@@ -9,26 +9,32 @@ import SwiftUI
 
 struct CoinsPage: View {
     @ObservedObject var coinsVM: CoinsViewModel
+    @State private var searchText = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("No search bar for now :)")
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 8)
-                    .background(.gray)
-                    .cornerRadius(10)
-                    .padding()
                 
                 ScrollView {
-                    LazyVStack {
-                        ForEach(coinsVM.coins.coins, id:\.self) { item in
-                            CoinListCell(showGraph: false, image: "bitcoinsign.circle.fill", name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                    if searchText.isEmpty {
+                        LazyVStack {
+                            ForEach(coinsVM.coins.coins, id:\.self) { item in
+                                CoinListCell(showGraph: false, image: "bitcoinsign.circle.fill", name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                            }
                         }
+                        .padding(.horizontal)
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
+                    } else {
+                        LazyVStack {
+                            ForEach(coinsVM.coins.coins.filter { $0.name.contains(searchText)}, id:\.self) { item in
+                                CoinListCell(showGraph: false, image: "bitcoinsign.circle.fill", name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                            }
+                        }
+                        .padding(.horizontal)
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
                     }
-                    .padding(.horizontal)
                 }
+                .searchable(text: $searchText)
             }
             .navigationTitle("Coins")
             .navigationBarTitleDisplayMode(.inline)
