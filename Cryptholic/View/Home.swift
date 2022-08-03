@@ -19,32 +19,7 @@ struct Home: View {
                             .padding()
                         VStack {
                             ForEach(1...3, id:\.self) { _ in
-                                HStack {
-                                    Image(systemName: "bitcoinsign.circle.fill")
-                                        .foregroundColor(.orange)
-                                        .font(.system(size: 45))
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("Bitcoin")
-                                            .fontWeight(.medium)
-                                        Text("BTC")
-                                            .foregroundColor(.gray)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chart.line.uptrend.xyaxis")
-                                        .font(.system(size: 35))
-                                    
-                                    Spacer()
-                                    
-                                    VStack(alignment: .trailing, spacing: 4) {
-                                        Text("USD 40,981.51")
-                                        Text("5.96%")
-                                            .foregroundColor(.red)
-                                    }
-                                    
-                                }
-                                .padding(.bottom,8)
+                                CoinListCell(showGraph: true, image: "bitcoinsign.circle.fill", name: "Bitcoin", symbol: "BTC", price: 40981.51, dailyChange: 5.96)
                             }
                         }
                         .padding(.horizontal)

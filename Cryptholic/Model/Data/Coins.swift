@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - Welcome
 struct Coins: Codable, Hashable{
     let coins: [Coin]
 }
@@ -20,8 +19,8 @@ struct Coin: Codable, Hashable {
     let rank: Int
     let price, priceBtc: Double
     let volume: Double?
-    let marketCap, availableSupply, totalSupply, priceChange1H: Double?
-    let priceChange1D, priceChange1W: Double?
+    let marketCap, availableSupply, totalSupply, priceChange1h: Double?
+    let priceChange1d, priceChange1w: Double?
     let websiteURL: String?
     let twitterURL: String?
     let exp: [String]
