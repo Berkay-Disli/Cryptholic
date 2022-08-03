@@ -16,6 +16,7 @@ class CoinsViewModel: ObservableObject {
     }
     
     func getData() {
+        coins = Coins(coins: [Coin]())
         guard let url = URL(string: "https://api.coinstats.app/public/v1/coins") else { return }
         print("DEBUG: Url is OK.")
         let task = URLSession.shared.dataTask(with: url) { data, _, error in

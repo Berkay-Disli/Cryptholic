@@ -15,27 +15,32 @@ struct CoinsPage: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    if searchText.isEmpty {
-                        LazyVStack {
-                            ForEach(coinsVM.coins.coins, id:\.self) { item in
-                                CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
-                                    .padding(.bottom, 14)
+                    if !coinsVM.coins.coins.isEmpty {
+                        if searchText.isEmpty {
+                            LazyVStack {
+                                ForEach(coinsVM.coins.coins, id:\.self) { item in
+                                    CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                        .padding(.bottom, 14)
+                                }
                             }
+                            .padding(.horizontal)
+                            .transition(AnyTransition.opacity.animation(.easeInOut))
+                        } else {
+                            LazyVStack {
+                                ForEach(coinsVM.coins.coins.filter { $0.name.contains(searchText)}, id:\.self) { item in
+                                    CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                }
+                            }
+                            .padding(.horizontal)
+                            .transition(AnyTransition.opacity.animation(.easeInOut))
                         }
-                        .padding(.horizontal)
-                        .transition(AnyTransition.opacity.animation(.easeInOut))
                     } else {
-                        LazyVStack {
-                            ForEach(coinsVM.coins.coins.filter { $0.name.contains(searchText)}, id:\.self) { item in
-                                CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
-                            }
-                        }
-                        .padding(.horizontal)
-                        .transition(AnyTransition.opacity.animation(.easeInOut))
+                        ProgressView()
                     }
                 }
                 .searchable(text: $searchText)
             }
+            
             .navigationTitle("Coins")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -44,7 +49,11 @@ struct CoinsPage: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Image(systemName: "bell")
+                    Image(systemName: "arrow.clockwise")
+                        .onTapGesture {
+                            coinsVM.getData()
+                            print("It works.")
+                        }
                 }
             }
         }

@@ -12,7 +12,7 @@ struct Home: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
+            RefreshableScrollView {
                 LazyVStack {
                     // Watchlist Section -- will automatically show the first 3 coins in the data.
                     VStack(alignment: .leading) {
@@ -37,30 +37,8 @@ struct Home: View {
                             .padding()
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
-                                ForEach(coinsVM.coins.coins, id:\.self) { item in
-                                    VStack(spacing: 8) {
-                                        HStack {
-                                            Image(systemName: "bitcoinsign.circle.fill")
-                                                .foregroundColor(.orange)
-                                                .font(.system(size: 45))
-                                            Text("Bitcoin")
-                                                .fontWeight(.medium)
-                                        }
-                                        HStack {
-                                            Text("BTC")
-                                                .bold()
-                                            Text("40,981.51")
-                                                .foregroundColor(.gray)
-                                        }
-                                        .font(.footnote)
-                                        
-                                        Text("27.38%")
-                                            .font(.title)
-                                            
-                                            .foregroundColor(.red)
-                                    }
-                                    .padding()
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(.gray.opacity(0.3)))
+                                ForEach(coinsVM.coins.coins.sorted{$0.priceChange1d ?? 0 > $1.priceChange1d ?? 0}.prefix(5), id:\.self) { item in
+                                    TopMoversCell(icon: item.icon, name: item.name, symbol: item.symbol, price: item.price, priceChange: item.priceChange1d ?? 0)
                                 }
                                 .padding(.horizontal, 2)
                             }
@@ -123,6 +101,8 @@ struct Home: View {
                         
                     }
                 }
+            } onRefresh: {
+                coinsVM.getData()
             }
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
