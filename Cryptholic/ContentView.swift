@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("To Do's:").font(.title).bold()
-            Text("Dark Mode \n")
+            Text("Dark Mode \n All Coin Images need to be circled! \n")
         }
     }
 }

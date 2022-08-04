@@ -33,33 +33,36 @@ struct TabManager: View {
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             }
             
-            VStack(spacing: 0) {
-                Divider()
-                HStack {
-                    ForEach(Tabs.allCases, id:\.self) { tabItem in
-                        Spacer()
-                        VStack(spacing: 4) {
-                            Image(systemName: navVM.tabSelection == tabItem ? "\(tabItem.iconName).fill" :tabItem.iconName)
-                                .font(.system(size: 25))
-                            Text(tabItem.title)
-                                .font(.callout)
-                        }
-                        .padding(.vertical, 4)
-                        .foregroundColor(navVM.tabSelection == tabItem ? .black:.gray)
-                        .onTapGesture {
-                            withAnimation(.easeInOut) {
-                                navVM.setTab(tab: tabItem)
+            if navVM.showTabBar {
+                VStack(spacing: 0) {
+                    Divider()
+                    HStack {
+                        ForEach(Tabs.allCases, id:\.self) { tabItem in
+                            Spacer()
+                            VStack(spacing: 4) {
+                                Image(systemName: navVM.tabSelection == tabItem ? "\(tabItem.iconName).fill" :tabItem.iconName)
+                                    .font(.system(size: 25))
+                                Text(tabItem.title)
+                                    .font(.callout)
                             }
+                            .padding(.vertical, 4)
+                            .foregroundColor(navVM.tabSelection == tabItem ? .black:.gray)
+                            .onTapGesture {
+                                withAnimation(.easeInOut) {
+                                    navVM.setTab(tab: tabItem)
+                                }
+                            }
+                            
+                            Spacer()
                         }
-                        
-                        Spacer()
                     }
+                    .padding(.top, 4)
+                    .frame(height: 100, alignment: .top)
+                    .background(.white)
                 }
-                .padding(.top, 4)
-                .frame(height: 100, alignment: .top)
-                .background(.white)
+                .zIndex(1)
+                .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut(duration: 0.25)))
             }
-            .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut))
             
         }
         .edgesIgnoringSafeArea(.bottom)

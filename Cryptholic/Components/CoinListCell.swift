@@ -28,6 +28,7 @@ struct CoinListCell: View {
                 Text(symbol)
                     .foregroundColor(.gray)
             }
+            .foregroundColor(.black)
             
             Spacer()
             
@@ -49,6 +50,7 @@ struct CoinListCell: View {
                 }
                 .foregroundColor(dailyChange >= 0 ? .green:.red)
             }
+            .foregroundColor(.black)
             
         }
         .padding(.bottom,8)

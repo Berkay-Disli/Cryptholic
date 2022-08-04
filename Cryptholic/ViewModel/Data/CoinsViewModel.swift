@@ -9,6 +9,8 @@ import Foundation
 
 class CoinsViewModel: ObservableObject {
     @Published var coins = Coins(coins: [Coin]())
+    // Created an empty Coin object to start with
+    var coinToShowDetails = Coin(id: "", icon: "", name: "", symbol: "", rank: 0, price: 0, priceBtc: 0, volume: 0, marketCap: 0, availableSupply: 0, totalSupply: 0, priceChange1h: 0, priceChange1d: 0, priceChange1w: 0, websiteURL: "", twitterURL: "", exp: [""], contractAddress: "", decimals: 0, redditURL: "")
     
     init() {
         getData()
@@ -35,5 +37,10 @@ class CoinsViewModel: ObservableObject {
         }
         
         task.resume()
+    }
+    
+    // 2. API link needs the name of the coin. As well as the time range, but I'll deal with that later.
+    func setCoinToShowDetails(coin: Coin) {
+        self.coinToShowDetails = coin
     }
 }

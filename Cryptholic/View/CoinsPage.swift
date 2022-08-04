@@ -10,6 +10,7 @@ import SwiftUI
 struct CoinsPage: View {
     @ObservedObject var coinsVM: CoinsViewModel
     @State private var searchText = ""
+    @EnvironmentObject var navVM: NavigationViewModel
     
     var body: some View {
         NavigationView {
@@ -42,7 +43,9 @@ struct CoinsPage: View {
                 .scrollDismissesKeyboard(.immediately)
                 
             }
-            
+            .onAppear {
+                navVM.openTabBar()
+            }
             .navigationTitle("Coins")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -64,5 +67,6 @@ struct CoinsPage: View {
 struct CoinsPage_Previews: PreviewProvider {
     static var previews: some View {
         CoinsPage(coinsVM: CoinsViewModel())
+            .environmentObject(NavigationViewModel())
     }
 }

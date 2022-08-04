@@ -9,7 +9,8 @@ import SwiftUI
 
 struct Home: View {
     @ObservedObject var coinsVM: CoinsViewModel
-
+    @EnvironmentObject var navVM: NavigationViewModel
+    
     var body: some View {
         NavigationView {
             RefreshableScrollView {
@@ -20,8 +21,16 @@ struct Home: View {
                             .font(.title2).fontWeight(.medium)
                             .padding()
                         VStack {
-                            ForEach(coinsVM.coins.coins.prefix(3), id:\.self) { item in
-                                CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                            ScrollView {
+                                ForEach(coinsVM.coins.coins.prefix(3), id:\.self) { item in
+                                    NavigationLink {
+                                        CoinDetails()
+                                    } label: {
+                                        CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                    }
+                                    
+
+                                }
                             }
                         }
                         .padding(.horizontal)
@@ -45,8 +54,7 @@ struct Home: View {
                             .padding(.horizontal)
                         }
                         Divider()
-                            .padding(.top)
-                            .padding(.bottom, 8)
+                            .padding(.vertical)
                     }
                     
                     // News Section -- No function for now :)
@@ -74,7 +82,8 @@ struct Home: View {
                                 // News Photo
                                 Image("eth")
                                     .resizable()
-                                    .scaledToFit()
+                                    .scaledToFill()
+                                    .frame(width: UIScreen.main.bounds.width, height: 262)
                                 
                                 // News Content
                                 VStack(spacing: 8) {
@@ -101,9 +110,13 @@ struct Home: View {
                         
                     }
                 }
+                .onAppear {
+                    navVM.openTabBar()
+                }
             } onRefresh: {
                 coinsVM.getData()
             }
+            .edgesIgnoringSafeArea(.bottom) // Optional
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -122,5 +135,6 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home(coinsVM: CoinsViewModel())
+            .environmentObject(NavigationViewModel())
     }
 }
