@@ -35,13 +35,12 @@ struct CoinListCell: View {
             if showGraph {
                 Image(systemName: "chart.line.uptrend.xyaxis")
                     .font(.system(size: 35))
-                    
             }
             
             Spacer()
             
             VStack(alignment: .trailing, spacing: 4) {
-                Text("USD \(price.formatted())")
+                Text("USD \(Double(round(10000 * price) / 10000).formatted())")
                     .lineLimit(1)
                 HStack(spacing: 4) {
                     Image(systemName: dailyChange >= 0 ? "arrow.up.right": "arrow.down.right")

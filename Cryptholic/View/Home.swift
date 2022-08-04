@@ -24,7 +24,7 @@ struct Home: View {
                             ScrollView {
                                 ForEach(coinsVM.coins.coins.prefix(3), id:\.self) { item in
                                     NavigationLink {
-                                        CoinDetails()
+                                        CoinDetails(coin: item)
                                     } label: {
                                         CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
                                     }
