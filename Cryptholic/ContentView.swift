@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    
+    
     var body: some View {
         VStack {
-            List {
-                ForEach(1...3, id:\.self) { item in
-                    HStack {
-                        Image(systemName: "house")
-                    }
-                }
-            }
-            .listStyle(.plain)
+            Text("To Do's:").font(.title).bold()
+            Text("Dark Mode \n")
         }
     }
 }

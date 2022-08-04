@@ -33,7 +33,7 @@ struct TabManager: View {
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             }
             
-            VStack {
+            VStack(spacing: 0) {
                 Divider()
                 HStack {
                     ForEach(Tabs.allCases, id:\.self) { tabItem in

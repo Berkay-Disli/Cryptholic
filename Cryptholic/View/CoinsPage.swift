@@ -38,7 +38,9 @@ struct CoinsPage: View {
                         ProgressView()
                     }
                 }
-                .searchable(text: $searchText)
+                .searchable(text: $searchText, prompt: "Search for a coin")
+                .scrollDismissesKeyboard(.immediately)
+                
             }
             
             .navigationTitle("Coins")
