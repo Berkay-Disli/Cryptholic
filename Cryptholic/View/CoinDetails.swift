@@ -7,11 +7,13 @@
 
 import SwiftUI
 import Kingfisher
+import SwiftUICharts
 
 struct CoinDetails: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navVM: NavigationViewModel
     let coin: Coin
+    let data : LineChartData = weekOfData()
     
     var body: some View {
         VStack {
@@ -67,9 +69,17 @@ struct CoinDetails: View {
             
             // Graph
             VStack {
-                Color.blue.opacity(0.15)
-                    .frame(height: 500)
-                    .padding(.top, 8)
+                
+                LineChart(chartData: data)
+                    .touchOverlay(chartData: data, specifier: "%.0f")
+                    .infoBox(chartData: data)
+                    //.xAxisGrid(chartData: data)
+                    //.yAxisGrid(chartData: data)
+                    //.xAxisLabels(chartData: data)
+                    //.yAxisLabels(chartData: data)
+
+                .frame(width: UIScreen.main.bounds.width, height: 500)
+                .padding(.top, 8)
                 HStack {
                     ForEach(TimezoneRanges.allCases, id:\.self) { item in
                         HStack {
@@ -120,6 +130,56 @@ struct CoinDetails: View {
         .navigationBarBackButtonHidden()
         
     }
+    
+    
+    static func weekOfData() -> LineChartData {
+            let data = LineDataSet(dataPoints: [
+                LineChartDataPoint(value: 12000, xAxisLabel: "M", description: "Monday"),
+                LineChartDataPoint(value: 10000, xAxisLabel: "T", description: "Tuesday"),
+                LineChartDataPoint(value: 8000,  xAxisLabel: "W", description: "Wednesday"),
+                LineChartDataPoint(value: 17500, xAxisLabel: "T", description: "Thursday"),
+                LineChartDataPoint(value: 16000, xAxisLabel: "F", description: "Friday"),
+                LineChartDataPoint(value: 11000, xAxisLabel: "S", description: "Saturday"),
+                LineChartDataPoint(value: 9000,  xAxisLabel: "S", description: "Sunday")
+            ],
+            legendTitle: "Steps",
+            pointStyle: PointStyle(),
+            style: LineStyle(lineColour: ColourStyle(colour: .orange), lineType: .curvedLine))
+
+            let metadata   = ChartMetadata(title: "Step Count", subtitle: "Over a Week")
+
+            let gridStyle  = GridStyle(numberOfLines: 7,
+                                       lineColour   : Color(.lightGray).opacity(0.5),
+                                       lineWidth    : 1,
+                                       dash         : [8],
+                                       dashPhase    : 0)
+
+            let chartStyle = LineChartStyle(infoBoxPlacement    : .infoBox(isStatic: false),
+                                            infoBoxBorderColour : Color.primary,
+                                            infoBoxBorderStyle  : StrokeStyle(lineWidth: 1),
+
+                                            markerType          : .vertical(attachment: .line(dot: .style(DotStyle()))),
+
+                                            xAxisGridStyle      : gridStyle,
+                                            xAxisLabelPosition  : .bottom,
+                                            xAxisLabelColour    : Color.primary,
+                                            xAxisLabelsFrom     : .dataPoint(rotation: .degrees(0)),
+
+                                            yAxisGridStyle      : gridStyle,
+                                            yAxisLabelPosition  : .leading,
+                                            yAxisLabelColour    : Color.primary,
+                                            yAxisNumberOfLabels : 7,
+
+                                            baseline            : .minimumWithMaximum(of: 5000),
+                                            topLine             : .maximum(of: 20000),
+
+                                            globalAnimation     : .easeOut(duration: 1))
+
+            return LineChartData(dataSets       : data,
+                                 metadata       : metadata,
+                                 chartStyle     : chartStyle)
+
+        }
 }
 
 struct CoinDetails_Previews: PreviewProvider {

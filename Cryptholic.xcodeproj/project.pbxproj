@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230E17A6289BF9D000E4DB60 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 230E17A5289BF9D000E4DB60 /* SwiftUICharts */; };
 		23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DDB289A63BB00B93757 /* CoinsPage.swift */; };
 		23242DE1289A641D00B93757 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DE0289A641D00B93757 /* Coins.swift */; };
 		23242DE4289A64FE00B93757 /* CoinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DE3289A64FE00B93757 /* CoinsViewModel.swift */; };
@@ -57,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23242DE9289A9E0400B93757 /* Kingfisher in Frameworks */,
+				230E17A6289BF9D000E4DB60 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +213,7 @@
 			name = Cryptholic;
 			packageProductDependencies = (
 				23242DE8289A9E0400B93757 /* Kingfisher */,
+				230E17A5289BF9D000E4DB60 /* SwiftUICharts */,
 			);
 			productName = Cryptholic;
 			productReference = 234064DF28992D8D00DB9E7F /* Cryptholic.app */;
@@ -242,6 +245,7 @@
 			mainGroup = 234064D628992D8D00DB9E7F;
 			packageReferences = (
 				23242DE7289A9E0400B93757 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				230E17A4289BF9D000E4DB60 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 			);
 			productRefGroup = 234064E028992D8D00DB9E7F /* Products */;
 			projectDirPath = "";
@@ -487,6 +491,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		230E17A4289BF9D000E4DB60 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/willdale/SwiftUICharts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		23242DE7289A9E0400B93757 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -498,6 +510,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		230E17A5289BF9D000E4DB60 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 230E17A4289BF9D000E4DB60 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
+		};
 		23242DE8289A9E0400B93757 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 23242DE7289A9E0400B93757 /* XCRemoteSwiftPackageReference "Kingfisher" */;
