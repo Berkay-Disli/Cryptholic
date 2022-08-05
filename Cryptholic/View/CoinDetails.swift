@@ -69,7 +69,7 @@ struct CoinDetails: View {
             
             // Graph
             VStack {
-                if coinVM.showGraph {
+                if coinVM.showChart {
                     LineChart(chartData: coinVM.lineChartData)
                         .touchOverlay(chartData: coinVM.lineChartData, specifier: "%.0f")
                         .infoBox(chartData: coinVM.lineChartData)
@@ -105,12 +105,6 @@ struct CoinDetails: View {
                 .padding(.horizontal)
             }
             .padding(.bottom, 4)
-            .onAppear {
-                coinVM.toggleShowGraph()
-            }
-            .onDisappear {
-                coinVM.toggleShowGraph()
-            }
             
             Divider()
                 .padding(.top)
