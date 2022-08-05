@@ -69,7 +69,6 @@ struct CoinDetails: View {
             
             // Graph
             VStack {
-                
                 if coinVM.showGraph {
                     LineChart(chartData: coinVM.lineChartData)
                         .touchOverlay(chartData: coinVM.lineChartData, specifier: "%.0f")
@@ -79,22 +78,28 @@ struct CoinDetails: View {
                         //.xAxisLabels(chartData: data)
                         //.yAxisLabels(chartData: data)
                     .frame(width: UIScreen.main.bounds.width, height: 500)
-                    .padding(.top, 8)
+                    .offset(y: -40)
                 } else {
                     Rectangle().fill(.white)
                         .frame(width: UIScreen.main.bounds.width, height: 500)
-                        .padding(.top, 8)
+                        .offset(y: -40)
                 }
                 HStack {
                     ForEach(TimezoneRanges.allCases, id:\.self) { item in
-                        HStack {
-                            Spacer()
-                            Text(item.urlValue.uppercased())
-                                .font(.title3).fontWeight(.medium)
-                                .foregroundColor(Color(uiColor: .darkGray))
-                                .padding(.top, 4)
-                            Spacer()
+                        Button {
+                            coinVM.setTimeZoneRange(range: item)
+                            coinVM.getCoinDetailsData(coin: coin)
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text(item.urlValue.uppercased())
+                                    .font(.title3).fontWeight(.medium)
+                                    .foregroundColor(coinVM.selectedTimeRange == item ? .red:Color(uiColor: .darkGray))
+                                    .padding(.top, 4)
+                                Spacer()
+                            }
                         }
+
                     }
                 }
                 .padding(.horizontal)
@@ -108,6 +113,7 @@ struct CoinDetails: View {
             }
             
             Divider()
+                .padding(.top)
             
             // Add to Fav Button
             Button {
