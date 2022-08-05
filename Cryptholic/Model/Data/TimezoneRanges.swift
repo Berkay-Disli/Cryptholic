@@ -8,16 +8,23 @@
 import Foundation
 
 enum TimezoneRanges: String, CaseIterable {
-    case hour, day, week
+    case day, week, month, threeMonts, sixMonths, year
     
-    var shortTitle: String {
+    var urlValue: String {
         switch self {
-        case .hour:
-            return "1H"
+            // 24h | 1w | 1m | 3m | 6m | 1y |all
         case .day:
-            return "1D"
+            return "24h"
         case .week:
-            return "1W"
+            return "1w"
+        case .month:
+            return "1m"
+        case .threeMonts:
+            return "3m"
+        case .sixMonths:
+            return "6m"
+        case .year:
+            return "1y"
         }
     }
 }

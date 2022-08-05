@@ -12,8 +12,8 @@ import SwiftUICharts
 struct CoinDetails: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navVM: NavigationViewModel
+    @ObservedObject var coinVM: CoinsViewModel
     let coin: Coin
-    let data : LineChartData = weekOfData()
     
     var body: some View {
         VStack {
@@ -70,21 +70,26 @@ struct CoinDetails: View {
             // Graph
             VStack {
                 
-                LineChart(chartData: data)
-                    .touchOverlay(chartData: data, specifier: "%.0f")
-                    .infoBox(chartData: data)
-                    //.xAxisGrid(chartData: data)
-                    //.yAxisGrid(chartData: data)
-                    //.xAxisLabels(chartData: data)
-                    //.yAxisLabels(chartData: data)
-
-                .frame(width: UIScreen.main.bounds.width, height: 500)
-                .padding(.top, 8)
+                if coinVM.showGraph {
+                    LineChart(chartData: coinVM.lineChartData)
+                        .touchOverlay(chartData: coinVM.lineChartData, specifier: "%.0f")
+                        .infoBox(chartData: coinVM.lineChartData)
+                        //.xAxisGrid(chartData: data)
+                        //.yAxisGrid(chartData: data)
+                        //.xAxisLabels(chartData: data)
+                        //.yAxisLabels(chartData: data)
+                    .frame(width: UIScreen.main.bounds.width, height: 500)
+                    .padding(.top, 8)
+                } else {
+                    Rectangle().fill(.white)
+                        .frame(width: UIScreen.main.bounds.width, height: 500)
+                        .padding(.top, 8)
+                }
                 HStack {
                     ForEach(TimezoneRanges.allCases, id:\.self) { item in
                         HStack {
                             Spacer()
-                            Text(item.shortTitle)
+                            Text(item.urlValue.uppercased())
                                 .font(.title3).fontWeight(.medium)
                                 .foregroundColor(Color(uiColor: .darkGray))
                                 .padding(.top, 4)
@@ -95,6 +100,12 @@ struct CoinDetails: View {
                 .padding(.horizontal)
             }
             .padding(.bottom, 4)
+            .onAppear {
+                coinVM.toggleShowGraph()
+            }
+            .onDisappear {
+                coinVM.toggleShowGraph()
+            }
             
             Divider()
             
@@ -118,6 +129,7 @@ struct CoinDetails: View {
         .edgesIgnoringSafeArea(.bottom)
         .onAppear(perform: {
             navVM.closeTabBar()
+            coinVM.getCoinDetailsData(coin: coin)
         })
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -133,6 +145,7 @@ struct CoinDetails: View {
     
     
     static func weekOfData() -> LineChartData {
+            
             let data = LineDataSet(dataPoints: [
                 LineChartDataPoint(value: 12000, xAxisLabel: "M", description: "Monday"),
                 LineChartDataPoint(value: 10000, xAxisLabel: "T", description: "Tuesday"),
@@ -185,7 +198,7 @@ struct CoinDetails: View {
 struct CoinDetails_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CoinDetails(coin: Coin(id: "", icon: "https://static.coinstats.app/coins/1650455588819.png", name: "Bitcoin", symbol: "BTC", rank: 1, price: 22008.51, priceBtc: 1, volume: 0, marketCap: 0, availableSupply: 0, totalSupply: 0, priceChange1h: 0, priceChange1d: -2.58, priceChange1w: 0, websiteURL: "", twitterURL: "", exp: [""], contractAddress: "", decimals: 0, redditURL: ""))
+            CoinDetails(coinVM: CoinsViewModel(), coin: Coin(id: "", icon: "https://static.coinstats.app/coins/1650455588819.png", name: "Bitcoin", symbol: "BTC", rank: 1, price: 22008.51, priceBtc: 1, volume: 0, marketCap: 0, availableSupply: 0, totalSupply: 0, priceChange1h: 0, priceChange1d: -2.58, priceChange1w: 0, websiteURL: "", twitterURL: "", exp: [""], contractAddress: "", decimals: 0, redditURL: ""))
                 .environmentObject(NavigationViewModel())
         }
     }
