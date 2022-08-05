@@ -10,5 +10,5 @@
 import Foundation
 
 struct CoinPrices: Codable {
-    let prices: [[Double]]
+    let chart: [[Double]]
 }
