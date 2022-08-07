@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUp: View {
+    @EnvironmentObject var authVM: AuthenticationViewModel
     @Environment(\.dismiss) var dismiss
     @State private var name = ""
     @State private var email = ""
@@ -27,7 +28,7 @@ struct SignUp: View {
             
             // header
             VStack(alignment: .leading){
-                Text("Hello\(name)")
+                Text("Hello \(name)")
                     .font(.largeTitle)
                     .fontWeight(.medium)
                     .animation(.easeInOut(duration: 0.23))
@@ -51,9 +52,10 @@ struct SignUp: View {
             .padding()
             
             VStack {
-
                 Button {
-                    
+                    if !name.isEmpty && !email.isEmpty && !password.isEmpty {
+                        authVM.createAccount(name: name, email: email, password: password)
+                    }
                 } label: {
                     BigButton(title: "Sign Up", bgColor: .black)
                         .padding()
@@ -83,5 +85,6 @@ struct SignUp: View {
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
         SignUp()
+            .environmentObject(AuthenticationViewModel())
     }
 }

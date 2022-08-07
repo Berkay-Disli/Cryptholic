@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct CryptholicApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            TabManager()
+            ContentView()
                 .environmentObject(NavigationViewModel())
+                .environmentObject(AuthenticationViewModel())
         }
     }
 }

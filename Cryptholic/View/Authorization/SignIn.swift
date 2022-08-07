@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignIn: View {
+    @EnvironmentObject var authVM: AuthenticationViewModel
     @State private var email = ""
     @State private var password = ""
     
@@ -51,7 +52,9 @@ struct SignIn: View {
 
                     
                     Button {
-                        
+                        if !email.isEmpty && !password.isEmpty {
+                            authVM.signIn(email: email, password: password)
+                        }
                     } label: {
                         BigButton(title: "Sign In", bgColor: .black)
                             .padding()
@@ -80,5 +83,6 @@ struct SignIn: View {
 struct SignIn_Previews: PreviewProvider {
     static var previews: some View {
         SignIn()
+            .environmentObject(AuthenticationViewModel())
     }
 }

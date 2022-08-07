@@ -99,8 +99,9 @@ class CoinsViewModel: ObservableObject {
                                                                                   baseline: .minimumWithMaximum(of: baseline),
                                                                                   topLine: .maximum(of: topline),
                                                                                   globalAnimation: .easeInOut(duration: 1)))
+                    self.showChart = true
                 }
-                self.showChart = true
+                
             } catch let err {
                 print(err)
             }

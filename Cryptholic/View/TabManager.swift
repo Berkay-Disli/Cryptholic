@@ -25,11 +25,7 @@ struct TabManager: View {
                 CoinsPage(coinsVM: coinsVM)
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             case .profile:
-                VStack {
-                    Spacer()
-                    Text("Profile")
-                    Spacer()
-                }
+                Profile()
                 .transition(AnyTransition.opacity.animation(.easeInOut))
             }
             
