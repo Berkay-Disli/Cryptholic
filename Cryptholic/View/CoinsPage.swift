@@ -30,6 +30,7 @@ struct CoinsPage: View {
                             LazyVStack {
                                 ForEach(coinsVM.coins.coins.filter { $0.name.contains(searchText)}, id:\.self) { item in
                                     CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                        .padding(.bottom, 14)
                                 }
                             }
                             .padding(.horizontal)

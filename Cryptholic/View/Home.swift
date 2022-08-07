@@ -27,6 +27,7 @@ struct Home: View {
                                         CoinDetails(coinVM: coinsVM, coin: item)
                                     } label: {
                                         CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                            .padding(.bottom, 14)
                                     }
                                     
 

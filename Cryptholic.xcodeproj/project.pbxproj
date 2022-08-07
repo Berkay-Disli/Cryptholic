@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23028C6128A000C500B755D4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23028C6028A000C500B755D4 /* Launch Screen.storyboard */; };
+		23028C6328A0045700B755D4 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23028C6228A0045700B755D4 /* RoundedShape.swift */; };
+		23028C6728A0081F00B755D4 /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23028C6628A0081F00B755D4 /* CustomInputView.swift */; };
+		23028C6928A0082C00B755D4 /* CustomPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23028C6828A0082C00B755D4 /* CustomPasswordField.swift */; };
+		230AF61C289F01D6001BCF72 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF61B289F01D6001BCF72 /* SignIn.swift */; };
+		230AF61E289F0DEE001BCF72 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF61D289F0DED001BCF72 /* BigButton.swift */; };
 		230E17A6289BF9D000E4DB60 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 230E17A5289BF9D000E4DB60 /* SwiftUICharts */; };
 		23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DDB289A63BB00B93757 /* CoinsPage.swift */; };
 		23242DE1289A641D00B93757 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DE0289A641D00B93757 /* Coins.swift */; };
@@ -16,6 +22,8 @@
 		23242DEB289AA8FC00B93757 /* TopMoversCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DEA289AA8FC00B93757 /* TopMoversCell.swift */; };
 		23242DEE289AAA6A00B93757 /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DED289AAA6A00B93757 /* RefreshableScrollView.swift */; };
 		23278D9B289D0A6B0039A5AB /* CoinPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23278D9A289D0A6B0039A5AB /* CoinPrices.swift */; };
+		233E815828A01A3000D037E4 /* GreetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233E815728A01A3000D037E4 /* GreetHeader.swift */; };
+		233E815A28A01AEE00D037E4 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233E815928A01AEE00D037E4 /* SignUp.swift */; };
 		234064E328992D8D00DB9E7F /* CryptholicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064E228992D8D00DB9E7F /* CryptholicApp.swift */; };
 		234064E528992D8D00DB9E7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064E428992D8D00DB9E7F /* ContentView.swift */; };
 		234064E728992D8E00DB9E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234064E628992D8E00DB9E7F /* Assets.xcassets */; };
@@ -31,6 +39,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23028C6028A000C500B755D4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		23028C6228A0045700B755D4 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
+		23028C6628A0081F00B755D4 /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
+		23028C6828A0082C00B755D4 /* CustomPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPasswordField.swift; sourceTree = "<group>"; };
+		230AF61B289F01D6001BCF72 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		230AF61D289F0DED001BCF72 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		23242DDB289A63BB00B93757 /* CoinsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsPage.swift; sourceTree = "<group>"; };
 		23242DE0289A641D00B93757 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
 		23242DE3289A64FE00B93757 /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
@@ -38,6 +52,8 @@
 		23242DEA289AA8FC00B93757 /* TopMoversCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMoversCell.swift; sourceTree = "<group>"; };
 		23242DED289AAA6A00B93757 /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		23278D9A289D0A6B0039A5AB /* CoinPrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPrices.swift; sourceTree = "<group>"; };
+		233E815728A01A3000D037E4 /* GreetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetHeader.swift; sourceTree = "<group>"; };
+		233E815928A01AEE00D037E4 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		234064DF28992D8D00DB9E7F /* Cryptholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptholic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		234064E228992D8D00DB9E7F /* CryptholicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptholicApp.swift; sourceTree = "<group>"; };
 		234064E428992D8D00DB9E7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		230AF61A289F01A2001BCF72 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				230AF61B289F01D6001BCF72 /* SignIn.swift */,
+				233E815928A01AEE00D037E4 /* SignUp.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		23242DDF289A63F500B93757 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				23242DED289AAA6A00B93757 /* RefreshableScrollView.swift */,
+				23028C6228A0045700B755D4 /* RoundedShape.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -121,6 +147,7 @@
 				234064F028992DEF00DB9E7F /* View */,
 				234064E228992D8D00DB9E7F /* CryptholicApp.swift */,
 				234064E428992D8D00DB9E7F /* ContentView.swift */,
+				23028C6028A000C500B755D4 /* Launch Screen.storyboard */,
 				234064E628992D8E00DB9E7F /* Assets.xcassets */,
 				234064E828992D8E00DB9E7F /* Preview Content */,
 			);
@@ -142,6 +169,7 @@
 				234064FC28993FC300DB9E7F /* Home.swift */,
 				23242DDB289A63BB00B93757 /* CoinsPage.swift */,
 				23F50C6A289BBCDE0080E8AC /* CoinDetails.swift */,
+				230AF61A289F01A2001BCF72 /* Authorization */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,6 +198,10 @@
 				23242DE5289A6E2300B93757 /* CoinListCell.swift */,
 				23242DEA289AA8FC00B93757 /* TopMoversCell.swift */,
 				23F50C6C289BC1900080E8AC /* IconButton.swift */,
+				230AF61D289F0DED001BCF72 /* BigButton.swift */,
+				23028C6628A0081F00B755D4 /* CustomInputView.swift */,
+				23028C6828A0082C00B755D4 /* CustomPasswordField.swift */,
+				233E815728A01A3000D037E4 /* GreetHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -266,6 +298,7 @@
 			files = (
 				23864599289B20E10086A2DC /* cryptholic.png in Resources */,
 				234064EA28992D8E00DB9E7F /* Preview Assets.xcassets in Resources */,
+				23028C6128A000C500B755D4 /* Launch Screen.storyboard in Resources */,
 				234064E728992D8E00DB9E7F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,17 +315,24 @@
 				23F50C6D289BC1900080E8AC /* IconButton.swift in Sources */,
 				23242DE4289A64FE00B93757 /* CoinsViewModel.swift in Sources */,
 				23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */,
+				230AF61C289F01D6001BCF72 /* SignIn.swift in Sources */,
 				23F50C6B289BBCDE0080E8AC /* CoinDetails.swift in Sources */,
 				23242DE1289A641D00B93757 /* Coins.swift in Sources */,
+				230AF61E289F0DEE001BCF72 /* BigButton.swift in Sources */,
 				23242DE6289A6E2300B93757 /* CoinListCell.swift in Sources */,
 				23F50C6F289BC6450080E8AC /* TimezoneRanges.swift in Sources */,
+				23028C6928A0082C00B755D4 /* CustomPasswordField.swift in Sources */,
+				233E815828A01A3000D037E4 /* GreetHeader.swift in Sources */,
+				233E815A28A01AEE00D037E4 /* SignUp.swift in Sources */,
 				234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */,
 				23278D9B289D0A6B0039A5AB /* CoinPrices.swift in Sources */,
 				234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */,
+				23028C6328A0045700B755D4 /* RoundedShape.swift in Sources */,
 				234064E328992D8D00DB9E7F /* CryptholicApp.swift in Sources */,
 				234064FD28993FC300DB9E7F /* Home.swift in Sources */,
 				234064F528992ECD00DB9E7F /* TabManager.swift in Sources */,
 				23242DEE289AAA6A00B93757 /* RefreshableScrollView.swift in Sources */,
+				23028C6728A0081F00B755D4 /* CustomInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +467,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,6 +497,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

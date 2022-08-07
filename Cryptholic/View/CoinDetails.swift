@@ -113,12 +113,7 @@ struct CoinDetails: View {
             Button {
                 
             } label: {
-                Text("Add to Watchlist")
-                    .font(.title3).fontWeight(.medium)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity).frame(height: 66)
-                    .background(.black)
-                    .cornerRadius(100)
+                BigButton(title: "Add To Watchlist", bgColor: .black)
                     .padding([.horizontal, .top])
             }
 

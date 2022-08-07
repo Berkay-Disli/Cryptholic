@@ -12,9 +12,10 @@ struct ContentView: View {
     
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text("To Do's:").font(.title).bold()
-            Text("Dark Mode \n All Coin Images need to be circled! \n")
+            Text("Graph's labels, legends and x y values")
+            Text("TabView Icons.. Logo, Color palette")
         }
     }
 }
