@@ -62,6 +62,9 @@ struct TabManager: View {
             
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            navVM.tabSelection = .home
+        }
     }
 }
 
