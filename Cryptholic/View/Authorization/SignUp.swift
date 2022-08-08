@@ -62,7 +62,7 @@ struct SignUp: View {
                 }
                 
                 Button {
-                    authVM.signInWithCredential()
+                    authVM.signUpWithCredential()
                 } label: {
                     BigSymbolButton(title: "Sign Up With Google", bgColor: .gray.opacity(0.3), textColor: .black, image: "google")
                         .padding(.horizontal)

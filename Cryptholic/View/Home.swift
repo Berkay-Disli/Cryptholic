@@ -11,7 +11,8 @@ struct Home: View {
     @ObservedObject var coinsVM: CoinsViewModel
     @EnvironmentObject var navVM: NavigationViewModel
     @EnvironmentObject var authVM: AuthenticationViewModel
-
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         NavigationView {
             RefreshableScrollView {
@@ -21,6 +22,7 @@ struct Home: View {
                         Text("Watchlist")
                             .font(.title2).fontWeight(.medium)
                             .padding()
+                            .foregroundColor(Color("black"))
                         VStack {
                             if !authVM.filtered.isEmpty {
                                 ScrollView {
@@ -51,6 +53,7 @@ struct Home: View {
                         Text("Top Movers")
                             .font(.title2).fontWeight(.medium)
                             .padding()
+                            .foregroundColor(Color("black"))
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(coinsVM.coins.coins.sorted{fabs($0.priceChange1d ?? 0) > fabs($1.priceChange1d ?? 0)}.prefix(5), id:\.self) { item in
@@ -69,18 +72,22 @@ struct Home: View {
                             .padding(.vertical)
                     }
                     
-                    // News Section -- No function for now :)
+                    // MARK: News Section -- No function for now :)
                     VStack(alignment: .leading) {
                         ForEach(1...3, id:\.self) { _ in
                             VStack(alignment: .leading) {
                                 // News Publisher
                                 HStack {
-                                    Image(systemName: "bitcoinsign.circle.fill")
-                                        .font(.system(size: 45))
-                                        .foregroundColor(.blue)
+                                    Image(colorScheme == .dark ? "logoFinalBlack":"logoFinal")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 45, height: 45)
+                                        .clipShape(Circle())
+                                        
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text("Cryptoholic")
                                             .font(.headline)
+                                            .foregroundColor(Color("black"))
                                         Text("News  -  August 2")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
@@ -104,12 +111,16 @@ struct Home: View {
                                         .fontWeight(.medium)
                                     Text("The most important upgrade in blockchain history is slated for August.")
                                 }
+                                .foregroundColor(Color("black"))
                                 .padding()
                                 
                                 // Like
                                 HStack {
                                     Image(systemName: "heart")
+                                        .foregroundColor(.red)
                                     Text("1.6K")
+                                        .foregroundColor(Color("black"))
+
                                 }
                                 .fontWeight(.medium)
                                 .padding(.horizontal)
@@ -126,7 +137,7 @@ struct Home: View {
                     //self.authVM.filtered.removeAll(keepingCapacity: false)
                     authVM.getUserInfo { success in
                         if success {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                                 var filteredArray = [Coin]()
                                 for coinId in authVM.favouriteCoins {
                                     let result = coinsVM.coins.coins.filter { $0.id == coinId }
@@ -139,12 +150,16 @@ struct Home: View {
                     navVM.openTabBar()
                     
                 }
-            } onRefresh: {
+                .background(Color("bg"))
+                
+            }
+            onRefresh: {
                 coinsVM.getData()
             }
             .edgesIgnoringSafeArea(.bottom) // Optional
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Image(systemName: "line.3.horizontal")

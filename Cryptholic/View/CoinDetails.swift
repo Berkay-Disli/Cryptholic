@@ -10,15 +10,17 @@ import Kingfisher
 import SwiftUICharts
 
 struct CoinDetails: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navVM: NavigationViewModel
     @EnvironmentObject var authVM: AuthenticationViewModel
     @ObservedObject var coinVM: CoinsViewModel
     let coin: Coin
+    @State private var gridEnabled = false
     
     var body: some View {
         VStack {
-            // Coin Info Header
+            // MARK: Coin Info Header
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Text(coin.name)
@@ -31,11 +33,12 @@ struct CoinDetails: View {
                 }
                 .padding(.top)
                 
-                // Price and Buttons
+                // MARK: Price and Buttons
                 HStack {
                     Text("USD \(Double(round(100 * coin.price) / 100).formatted())")
                         .font(.system(size: 32))
                         .fontWeight(.medium)
+                        .foregroundColor(Color("black"))
                     Spacer()
                     //Buttons
                     HStack {
@@ -45,15 +48,25 @@ struct CoinDetails: View {
                             IconButton(iconName: "bell")
                         }
                         
-                        Button {
-                            // some settings?
+                        Menu {
+                            Menu("Color") {
+                                ForEach(ChartColors.allCases, id:\.self) { item in
+                                    Button {
+                                        coinVM.changeChartColor(color: item.color)
+                                        coinVM.getCoinDetailsData(coin: coin)
+                                    } label: {
+                                        Text(item.title)
+                                    }
+                                }
+                            }
+                            Toggle("Grid", isOn: $gridEnabled)
                         } label: {
                             IconButton(iconName: "slider.vertical.3")
                         }
                     }
                 }
                 
-                // Price Change Info
+                // MARK: Price Change Info
                 if let priceRatio1d = coin.priceChange1d {
                     HStack{
                         Image(systemName: priceRatio1d >= 0 ? "arrow.up.right":"arrow.down.right")
@@ -68,16 +81,19 @@ struct CoinDetails: View {
             }
             .padding(.horizontal)
             
-            // Graph
+            // MARK: Graph
             VStack {
                 if coinVM.showChart {
                     LineChart(chartData: coinVM.lineChartData)
                         .touchOverlay(chartData: coinVM.lineChartData, specifier: "%.0f")
                         .infoBox(chartData: coinVM.lineChartData)
-                        //.xAxisGrid(chartData: data)
-                        //.yAxisGrid(chartData: data)
-                        //.xAxisLabels(chartData: data)
-                        //.yAxisLabels(chartData: data)
+                        .if(gridEnabled) { $0.xAxisGrid(chartData: coinVM.lineChartData)
+                        }
+                        .if(gridEnabled) { $0.yAxisGrid(chartData: coinVM.lineChartData)
+                        }
+                        //.yAxisGrid(chartData: coinVM.lineChartData)
+                        //.xAxisLabels(chartData: coinVM.lineChartData)
+                        //.yAxisLabels(chartData: coinVM.lineChartData)
                     .frame(width: UIScreen.main.bounds.width, height: 500)
                     .offset(y: -40)
                 } else {
@@ -95,7 +111,7 @@ struct CoinDetails: View {
                                 Spacer()
                                 Text(item.urlValue.uppercased())
                                     .font(.title3).fontWeight(.medium)
-                                    .foregroundColor(coinVM.selectedTimeRange == item ? .red:Color(uiColor: .darkGray))
+                                    .foregroundColor(coinVM.selectedTimeRange == item ? .red:Color(uiColor: colorScheme == .dark ? .lightGray:.darkGray))
                                     .padding(.top, 4)
                                 Spacer()
                             }
@@ -110,7 +126,7 @@ struct CoinDetails: View {
             Divider()
                 .padding(.top)
             
-            // Add to Fav Button
+            // MARK: Add to Fav Button
             Button {
                 if authVM.favouriteCoins.contains(coin.id) {
                     authVM.removeFromFavourites(coin: coin)
@@ -121,7 +137,7 @@ struct CoinDetails: View {
                     print("Favourites updated.")
                 }
             } label: {
-                BigButton(title: authVM.favouriteCoins.contains(coin.id) ? "Remove from Favourites":"Add To Favourites", bgColor: authVM.favouriteCoins.contains(coin.id) ? .red:.black, textColor: authVM.favouriteCoins.contains(coin.id) ? .white:.white)
+                BigButton(title: authVM.favouriteCoins.contains(coin.id) ? "Remove from Favourites":"Add To Favourites", bgColor: authVM.favouriteCoins.contains(coin.id) ? .red:Color("black"), textColor: authVM.favouriteCoins.contains(coin.id) ? Color("white"):Color("white"))
                     .padding([.horizontal, .top])
                     .animation(.easeInOut, value: authVM.favouriteCoins.contains(coin.id))
             }
@@ -130,6 +146,7 @@ struct CoinDetails: View {
             
             Spacer()
         }
+        .background(Color("bg"))
         .edgesIgnoringSafeArea(.bottom)
         .onAppear(perform: {
             navVM.closeTabBar()
@@ -150,56 +167,6 @@ struct CoinDetails: View {
         
     }
     
-    
-    static func weekOfData() -> LineChartData {
-            
-            let data = LineDataSet(dataPoints: [
-                LineChartDataPoint(value: 12000, xAxisLabel: "M", description: "Monday"),
-                LineChartDataPoint(value: 10000, xAxisLabel: "T", description: "Tuesday"),
-                LineChartDataPoint(value: 8000,  xAxisLabel: "W", description: "Wednesday"),
-                LineChartDataPoint(value: 17500, xAxisLabel: "T", description: "Thursday"),
-                LineChartDataPoint(value: 16000, xAxisLabel: "F", description: "Friday"),
-                LineChartDataPoint(value: 11000, xAxisLabel: "S", description: "Saturday"),
-                LineChartDataPoint(value: 9000,  xAxisLabel: "S", description: "Sunday")
-            ],
-            legendTitle: "Steps",
-            pointStyle: PointStyle(),
-            style: LineStyle(lineColour: ColourStyle(colour: .orange), lineType: .curvedLine))
-
-            let metadata   = ChartMetadata(title: "Step Count", subtitle: "Over a Week")
-
-            let gridStyle  = GridStyle(numberOfLines: 7,
-                                       lineColour   : Color(.lightGray).opacity(0.5),
-                                       lineWidth    : 1,
-                                       dash         : [8],
-                                       dashPhase    : 0)
-
-            let chartStyle = LineChartStyle(infoBoxPlacement    : .infoBox(isStatic: false),
-                                            infoBoxBorderColour : Color.primary,
-                                            infoBoxBorderStyle  : StrokeStyle(lineWidth: 1),
-
-                                            markerType          : .vertical(attachment: .line(dot: .style(DotStyle()))),
-
-                                            xAxisGridStyle      : gridStyle,
-                                            xAxisLabelPosition  : .bottom,
-                                            xAxisLabelColour    : Color.primary,
-                                            xAxisLabelsFrom     : .dataPoint(rotation: .degrees(0)),
-
-                                            yAxisGridStyle      : gridStyle,
-                                            yAxisLabelPosition  : .leading,
-                                            yAxisLabelColour    : Color.primary,
-                                            yAxisNumberOfLabels : 7,
-
-                                            baseline            : .minimumWithMaximum(of: 5000),
-                                            topLine             : .maximum(of: 20000),
-
-                                            globalAnimation     : .easeOut(duration: 1))
-
-            return LineChartData(dataSets       : data,
-                                 metadata       : metadata,
-                                 chartStyle     : chartStyle)
-
-        }
 }
 
 struct CoinDetails_Previews: PreviewProvider {
@@ -209,5 +176,13 @@ struct CoinDetails_Previews: PreviewProvider {
                 .environmentObject(NavigationViewModel())
                 .environmentObject(AuthenticationViewModel())
         }
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func `if`<Transform: View>(_ condition: Bool, transform: (Self) -> Transform) -> some View {
+        if condition { transform(self) }
+        else { self }
     }
 }

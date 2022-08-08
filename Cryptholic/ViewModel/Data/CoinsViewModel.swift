@@ -19,6 +19,7 @@ class CoinsViewModel: ObservableObject {
     
     @Published var showChart = false
     private var dataPointsArray: [LineChartDataPoint] = []
+    private var chartColor: Color = .red
     
     init() {
         getData()
@@ -58,7 +59,7 @@ class CoinsViewModel: ObservableObject {
                     var topline = 0.0
                     self.dataPointsArray.removeAll(keepingCapacity: false)
                     for valueSet in self.coinPrices.chart {
-                        self.dataPointsArray.append(LineChartDataPoint(value: valueSet[1] , xAxisLabel: "a", description: "AAA"))
+                        self.dataPointsArray.append(LineChartDataPoint(value: valueSet[1] , xAxisLabel: "a", description: coin.symbol))
                         if valueSet[1] >= topline {
                             topline = valueSet[1]
                         }
@@ -70,17 +71,17 @@ class CoinsViewModel: ObservableObject {
                     self.lineChartData = LineChartData(dataSets: LineDataSet(dataPoints: self.dataPointsArray,
                                                                              legendTitle: self.coinToShowDetails.symbol,
                                                                              pointStyle: PointStyle(),
-                                                                             style: LineStyle(lineColour: ColourStyle(colour: .orange), lineType: .curvedLine, strokeStyle: Stroke(lineWidth: 2))),
+                                                                             style: LineStyle(lineColour: ColourStyle(colour: self.chartColor), lineType: .curvedLine, strokeStyle: Stroke(lineWidth: 2))),
                                                        metadata: ChartMetadata(title: self.coinToShowDetails.name,
                                                                                subtitle: self.coinToShowDetails.symbol,
                                                                                titleFont: .callout,
                                                                                titleColour: .orange,
                                                                                subtitleFont: .caption,
                                                                                subtitleColour: .blue),
-                                                       chartStyle: LineChartStyle(infoBoxPlacement: .infoBox(isStatic: false),
+                                                       chartStyle: LineChartStyle(infoBoxPlacement: .infoBox(isStatic: true),
                                                                                   infoBoxBorderColour: .primary,
                                                                                   infoBoxBorderStyle: StrokeStyle(lineWidth: 1),
-                                                                                  markerType: .vertical(attachment: .line(dot: .style(DotStyle(fillColour: .blue, lineColour: .blue)))),
+                                                                                  markerType: .vertical(attachment: .line(dot: .style(DotStyle(fillColour: .white, lineColour: .black)))),
                                                                                   xAxisGridStyle: GridStyle(numberOfLines: 7,
                                                                                                             lineColour: Color(.lightGray).opacity(0.5),
                                                                                                             lineWidth: 1,
@@ -108,9 +109,14 @@ class CoinsViewModel: ObservableObject {
         }
         
         task.resume()
-        
-                
     }
+    
+    func changeChartColor(color: Color) {
+        withAnimation(.easeInOut) {
+            self.chartColor = color
+        }
+    }
+    
     
     func setTimeZoneRange(range: TimezoneRanges) {
         self.selectedTimeRange = range

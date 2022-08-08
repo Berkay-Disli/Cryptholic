@@ -54,6 +54,7 @@ struct CoinsPage: View {
                 .scrollDismissesKeyboard(.immediately)
                 
             }
+            .background(Color("bg"))
             .onAppear {
                 navVM.openTabBar()
             }

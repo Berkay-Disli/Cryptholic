@@ -14,6 +14,7 @@ struct TopMoversCell: View {
     let symbol: String
     let price: Double
     let priceChange: Double
+    
     var body: some View {
         VStack(spacing: 8) {
             HStack {
@@ -23,10 +24,12 @@ struct TopMoversCell: View {
                     .frame(width: 45, height: 45)
                 Text(name)
                     .fontWeight(.medium)
+                    .foregroundColor(Color("black"))
             }
             HStack {
                 Text(symbol)
                     .bold()
+                    .foregroundColor(Color("black"))
                 Text("USD \(price.formatted())")
                     .lineLimit(1)
                     .foregroundColor(.gray)

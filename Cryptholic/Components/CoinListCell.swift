@@ -25,6 +25,7 @@ struct CoinListCell: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(name)
                     .fontWeight(.medium)
+                    .foregroundColor(Color("black"))
                 Text(symbol)
                     .foregroundColor(.gray)
             }
@@ -42,6 +43,7 @@ struct CoinListCell: View {
             VStack(alignment: .trailing, spacing: 4) {
                 Text("USD \(Double(round(10000 * price) / 10000).formatted())")
                     .lineLimit(1)
+                    .foregroundColor(Color("black"))
                 HStack(spacing: 4) {
                     Image(systemName: dailyChange >= 0 ? "arrow.up.right": "arrow.down.right")
                         .font(.footnote)

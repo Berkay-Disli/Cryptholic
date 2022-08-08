@@ -42,7 +42,7 @@ struct TabManager: View {
                                     .font(.callout)
                             }
                             .padding(.vertical, 4)
-                            .foregroundColor(navVM.tabSelection == tabItem ? .black:.gray)
+                            .foregroundColor(navVM.tabSelection == tabItem ? Color("black"):.gray)
                             .onTapGesture {
                                 withAnimation(.easeInOut) {
                                     navVM.setTab(tab: tabItem)
@@ -54,7 +54,7 @@ struct TabManager: View {
                     }
                     .padding(.top, 4)
                     .frame(height: 100, alignment: .top)
-                    .background(.white)
+                    .background(Color("bg"))
                 }
                 .zIndex(1)
                 .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut(duration: 0.25)))
@@ -72,5 +72,6 @@ struct TabManager_Previews: PreviewProvider {
     static var previews: some View {
         TabManager()
             .environmentObject(NavigationViewModel())
+            .environmentObject(AuthenticationViewModel())
     }
 }

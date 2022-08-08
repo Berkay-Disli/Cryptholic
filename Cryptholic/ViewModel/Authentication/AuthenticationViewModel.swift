@@ -48,6 +48,48 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
+    func signUpWithCredential() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: ApplicationUtility.rootViewController) { [unowned self] user, error in
+
+          if let error {
+            print(error)
+            return
+          }
+
+          guard
+            let authentication = user?.authentication,
+            let idToken = authentication.idToken
+          else { return }
+
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                         accessToken: authentication.accessToken)
+
+        Auth.auth().signIn(with: credential) { result, error in
+                if let error {
+                    print(error.localizedDescription)
+                    return
+                }
+            guard let user = result?.user else { return }
+            self.userSession = user
+            
+            let userData = ["username": user.displayName ?? "No Username", "email": user.email ?? "No E-Mail", "favourites": ["bitcoin", "ethereum", "tether"]] as [String:Any]
+            Firestore.firestore().collection("users").document(user.uid).setData(userData) { error in
+                if let error { print(error.localizedDescription)} else {
+                    print("User info saved.")
+                }
+            }
+            
+            }
+        }
+        
+    }
+    
     func signInWithCredential() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 
@@ -77,7 +119,6 @@ class AuthenticationViewModel: ObservableObject {
                 }
             guard let user = result?.user else { return }
             self.userSession = user
-            print("User logged in with GOOGLE: \(user)")
             }
         }
         

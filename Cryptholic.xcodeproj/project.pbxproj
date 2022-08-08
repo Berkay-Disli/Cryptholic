@@ -42,6 +42,7 @@
 		23BC424628A14FB8004C11D8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 23BC424528A14FB8004C11D8 /* GoogleSignIn */; };
 		23BC424928A1534C004C11D8 /* ApplicationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC424828A1534C004C11D8 /* ApplicationUtility.swift */; };
 		23BC424B28A15714004C11D8 /* BigSymbolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC424A28A15714004C11D8 /* BigSymbolButton.swift */; };
+		23EDFF8D28A1821400BCBE63 /* ChartColorRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDFF8C28A1821400BCBE63 /* ChartColorRanges.swift */; };
 		23F50C6B289BBCDE0080E8AC /* CoinDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6A289BBCDE0080E8AC /* CoinDetails.swift */; };
 		23F50C6D289BC1900080E8AC /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6C289BC1900080E8AC /* IconButton.swift */; };
 		23F50C6F289BC6450080E8AC /* TimezoneRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6E289BC6450080E8AC /* TimezoneRanges.swift */; };
@@ -80,6 +81,7 @@
 		23BC424728A1500D004C11D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		23BC424828A1534C004C11D8 /* ApplicationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUtility.swift; sourceTree = "<group>"; };
 		23BC424A28A15714004C11D8 /* BigSymbolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigSymbolButton.swift; sourceTree = "<group>"; };
+		23EDFF8C28A1821400BCBE63 /* ChartColorRanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartColorRanges.swift; sourceTree = "<group>"; };
 		23F50C6A289BBCDE0080E8AC /* CoinDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetails.swift; sourceTree = "<group>"; };
 		23F50C6C289BC1900080E8AC /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		23F50C6E289BC6450080E8AC /* TimezoneRanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneRanges.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				23242DE0289A641D00B93757 /* Coins.swift */,
 				23278D9A289D0A6B0039A5AB /* CoinPrices.swift */,
 				23F50C6E289BC6450080E8AC /* TimezoneRanges.swift */,
+				23EDFF8C28A1821400BCBE63 /* ChartColorRanges.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				23242DE4289A64FE00B93757 /* CoinsViewModel.swift in Sources */,
 				23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */,
 				23BC424B28A15714004C11D8 /* BigSymbolButton.swift in Sources */,
+				23EDFF8D28A1821400BCBE63 /* ChartColorRanges.swift in Sources */,
 				230AF61C289F01D6001BCF72 /* SignIn.swift in Sources */,
 				23F50C6B289BBCDE0080E8AC /* CoinDetails.swift in Sources */,
 				23242DE1289A641D00B93757 /* Coins.swift in Sources */,
