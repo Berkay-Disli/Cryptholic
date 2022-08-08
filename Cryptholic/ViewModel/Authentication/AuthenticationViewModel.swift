@@ -10,6 +10,9 @@ import Firebase
 
 class AuthenticationViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
+    @Published var favouriteCoins = [String]()
+    
+    
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -24,7 +27,7 @@ class AuthenticationViewModel: ObservableObject {
                 self.userSession = user
                 print("User created: \(user.email ?? "email error")")
                 
-                let userData = ["username": name, "email": email] as [String:Any]
+                let userData = ["username": name, "email": email, "favourites": ["bitcoin", "ethereum", "tether"]] as [String:Any]
                 Firestore.firestore().collection("users").document(user.uid).setData(userData) { error in
                     if let error { print(error.localizedDescription)} else {
                         print("User info saved.")
@@ -54,5 +57,17 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
+    func getUserInfo(completion: (Bool) -> Void) {
+        guard let userSession else { return }
+        Firestore.firestore().collection("users").document(userSession.uid).getDocument { snapshot, error in
+            guard let snapshot, error == nil else { return }
+            
+            guard let userFavs = snapshot.get("favourites") as? [String] else { return }
+            
+            self.favouriteCoins = userFavs
+            print("Fonksiyon print: \(self.favouriteCoins)")
+        }
+        completion(true)
+    }
     
 }

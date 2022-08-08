@@ -10,7 +10,10 @@ import SwiftUI
 struct Home: View {
     @ObservedObject var coinsVM: CoinsViewModel
     @EnvironmentObject var navVM: NavigationViewModel
+    @EnvironmentObject var authVM: AuthenticationViewModel
     
+    @State private var filtered = [Coin]()
+
     var body: some View {
         NavigationView {
             RefreshableScrollView {
@@ -22,16 +25,15 @@ struct Home: View {
                             .padding()
                         VStack {
                             ScrollView {
-                                ForEach(coinsVM.coins.coins.prefix(3), id:\.self) { item in
+                                ForEach(filtered, id:\.self) { coin in
                                     NavigationLink {
-                                        CoinDetails(coinVM: coinsVM, coin: item)
+                                        CoinDetails(coinVM: coinsVM, coin: coin)
                                     } label: {
-                                        CoinListCell(showGraph: false, image: item.icon, name: item.name, symbol: item.symbol, price: item.price, dailyChange: item.priceChange1d ?? 0)
+                                        CoinListCell(showGraph: false, image: coin.icon, name: coin.name, symbol: coin.symbol, price: coin.price, dailyChange: coin.priceChange1d ?? 0)
                                             .padding(.bottom, 14)
                                     }
-                                    
-
                                 }
+                                .animation(.easeInOut, value: filtered)
                             }
                         }
                         .padding(.horizontal)
@@ -117,7 +119,20 @@ struct Home: View {
                     }
                 }
                 .onAppear {
+                    authVM.getUserInfo { success in
+                        if success {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                var filteredArray = [Coin]()
+                                for coinId in authVM.favouriteCoins {
+                                    let result = coinsVM.coins.coins.filter { $0.id == coinId }
+                                    filteredArray.append(result.first!)
+                                }
+                                self.filtered = filteredArray
+                            }
+                        }
+                    }
                     navVM.openTabBar()
+                    
                 }
             } onRefresh: {
                 coinsVM.getData()
@@ -142,5 +157,6 @@ struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home(coinsVM: CoinsViewModel())
             .environmentObject(NavigationViewModel())
+            .environmentObject(AuthenticationViewModel())
     }
 }
