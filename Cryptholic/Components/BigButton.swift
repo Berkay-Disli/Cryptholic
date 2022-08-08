@@ -13,17 +13,20 @@ struct BigButton: View {
     let textColor: Color
     
     var body: some View {
-        Text(title)
-            .font(.title3).fontWeight(.medium)
-            .foregroundColor(textColor)
-            .frame(maxWidth: .infinity).frame(height: 60)
-            .background(bgColor)
-            .cornerRadius(100)
+        ZStack {
+            Text(title)
+        }
+        .font(.title3).fontWeight(.medium)
+        .foregroundColor(textColor)
+        .frame(maxWidth: .infinity).frame(height: 60)
+        .background(bgColor)
+        .cornerRadius(100)
     }
 }
 
 struct BigButton_Previews: PreviewProvider {
     static var previews: some View {
         BigButton(title: "Add to Watchlist", bgColor: .black, textColor: .white)
+            .padding(.horizontal)
     }
 }

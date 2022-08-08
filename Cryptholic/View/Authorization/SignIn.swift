@@ -60,6 +60,13 @@ struct SignIn: View {
                             .padding()
                     }
                     
+                    Button {
+                        authVM.signInWithCredential()
+                    } label: {
+                        BigSymbolButton(title: "Sign In With Google", bgColor: .gray.opacity(0.3), textColor: .black, image: "google")
+                            .padding(.horizontal)
+                    }
+                    
                     Spacer()
                     
                     NavigationLink {

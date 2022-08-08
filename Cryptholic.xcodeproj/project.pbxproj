@@ -40,6 +40,8 @@
 		23B8A85E28A02CD2009D1C06 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 23B8A85D28A02CD2009D1C06 /* SwiftUICharts */; };
 		23B8A86128A02CE3009D1C06 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 23B8A86028A02CE3009D1C06 /* Kingfisher */; };
 		23BC424628A14FB8004C11D8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 23BC424528A14FB8004C11D8 /* GoogleSignIn */; };
+		23BC424928A1534C004C11D8 /* ApplicationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC424828A1534C004C11D8 /* ApplicationUtility.swift */; };
+		23BC424B28A15714004C11D8 /* BigSymbolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC424A28A15714004C11D8 /* BigSymbolButton.swift */; };
 		23F50C6B289BBCDE0080E8AC /* CoinDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6A289BBCDE0080E8AC /* CoinDetails.swift */; };
 		23F50C6D289BC1900080E8AC /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6C289BC1900080E8AC /* IconButton.swift */; };
 		23F50C6F289BC6450080E8AC /* TimezoneRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6E289BC6450080E8AC /* TimezoneRanges.swift */; };
@@ -75,6 +77,9 @@
 		234064FC28993FC300DB9E7F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		23864593289B16420086A2DC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		23864598289B20E10086A2DC /* cryptholic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cryptholic.png; sourceTree = "<group>"; };
+		23BC424728A1500D004C11D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		23BC424828A1534C004C11D8 /* ApplicationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUtility.swift; sourceTree = "<group>"; };
+		23BC424A28A15714004C11D8 /* BigSymbolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigSymbolButton.swift; sourceTree = "<group>"; };
 		23F50C6A289BBCDE0080E8AC /* CoinDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetails.swift; sourceTree = "<group>"; };
 		23F50C6C289BC1900080E8AC /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		23F50C6E289BC6450080E8AC /* TimezoneRanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneRanges.swift; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 			children = (
 				23242DED289AAA6A00B93757 /* RefreshableScrollView.swift */,
 				23028C6228A0045700B755D4 /* RoundedShape.swift */,
+				23BC424828A1534C004C11D8 /* ApplicationUtility.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -162,6 +168,7 @@
 		234064E128992D8D00DB9E7F /* Cryptholic */ = {
 			isa = PBXGroup;
 			children = (
+				23BC424728A1500D004C11D8 /* Info.plist */,
 				23242DEC289AAA6100B93757 /* Utils */,
 				234064F328992E0500DB9E7F /* Components */,
 				234064F228992DF500DB9E7F /* Model */,
@@ -224,6 +231,7 @@
 				23242DEA289AA8FC00B93757 /* TopMoversCell.swift */,
 				23F50C6C289BC1900080E8AC /* IconButton.swift */,
 				230AF61D289F0DED001BCF72 /* BigButton.swift */,
+				23BC424A28A15714004C11D8 /* BigSymbolButton.swift */,
 				23028C6628A0081F00B755D4 /* CustomInputView.swift */,
 				23028C6828A0082C00B755D4 /* CustomPasswordField.swift */,
 				233E815728A01A3000D037E4 /* GreetHeader.swift */,
@@ -347,6 +355,7 @@
 				23F50C6D289BC1900080E8AC /* IconButton.swift in Sources */,
 				23242DE4289A64FE00B93757 /* CoinsViewModel.swift in Sources */,
 				23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */,
+				23BC424B28A15714004C11D8 /* BigSymbolButton.swift in Sources */,
 				230AF61C289F01D6001BCF72 /* SignIn.swift in Sources */,
 				23F50C6B289BBCDE0080E8AC /* CoinDetails.swift in Sources */,
 				23242DE1289A641D00B93757 /* Coins.swift in Sources */,
@@ -359,6 +368,7 @@
 				233E815A28A01AEE00D037E4 /* SignUp.swift in Sources */,
 				234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */,
 				230448C428A0615B00986672 /* Profile.swift in Sources */,
+				23BC424928A1534C004C11D8 /* ApplicationUtility.swift in Sources */,
 				23278D9B289D0A6B0039A5AB /* CoinPrices.swift in Sources */,
 				234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */,
 				23028C6328A0045700B755D4 /* RoundedShape.swift in Sources */,
@@ -498,6 +508,7 @@
 				DEVELOPMENT_TEAM = 62693BZN4B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cryptholic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -528,6 +539,7 @@
 				DEVELOPMENT_TEAM = 62693BZN4B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cryptholic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
