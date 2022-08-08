@@ -57,7 +57,7 @@ struct SignUp: View {
                         authVM.createAccount(name: name, email: email, password: password)
                     }
                 } label: {
-                    BigButton(title: "Sign Up", bgColor: .black)
+                    BigButton(title: "Sign Up", bgColor: .black, textColor: .white)
                         .padding()
                 }
                 

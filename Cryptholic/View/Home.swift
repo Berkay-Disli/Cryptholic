@@ -36,6 +36,8 @@ struct Home: View {
                                 }
                             } else {
                                 ProgressView()
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding()
                             }
                         }
                         .padding(.horizontal)

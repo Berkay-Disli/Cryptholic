@@ -71,4 +71,28 @@ class AuthenticationViewModel: ObservableObject {
         completion(true)
     }
     
+    func addToFavourites(coin: Coin) {
+        guard let userSession else { return }
+        favouriteCoins.append(coin.id)
+        Firestore.firestore().collection("users").document(userSession.uid).updateData(["favourites" : favouriteCoins]) { error in
+            if let error {
+                print(error.localizedDescription)
+            } else {
+                print("Data is updated.")
+            }
+        }
+    }
+    
+    func removeFromFavourites(coin: Coin) {
+        guard let userSession else { return }
+        favouriteCoins = favouriteCoins.filter { $0 != coin.id }
+        Firestore.firestore().collection("users").document(userSession.uid).updateData(["favourites" : favouriteCoins]) { error in
+            if let error {
+                print(error.localizedDescription)
+            } else {
+                print("Data is updated.")
+            }
+        }
+    }
+    
 }

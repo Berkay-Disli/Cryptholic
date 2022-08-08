@@ -12,6 +12,7 @@ import SwiftUICharts
 struct CoinDetails: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navVM: NavigationViewModel
+    @EnvironmentObject var authVM: AuthenticationViewModel
     @ObservedObject var coinVM: CoinsViewModel
     let coin: Coin
     
@@ -111,10 +112,18 @@ struct CoinDetails: View {
             
             // Add to Fav Button
             Button {
-                
+                if authVM.favouriteCoins.contains(coin.id) {
+                    authVM.removeFromFavourites(coin: coin)
+                } else {
+                    authVM.addToFavourites(coin: coin)
+                }
+                authVM.getUserInfo { _ in
+                    print("Favourites updated.")
+                }
             } label: {
-                BigButton(title: "Add To Watchlist", bgColor: .black)
+                BigButton(title: authVM.favouriteCoins.contains(coin.id) ? "Remove from Favourites":"Add To Favourites", bgColor: authVM.favouriteCoins.contains(coin.id) ? .red:.black, textColor: authVM.favouriteCoins.contains(coin.id) ? .white:.white)
                     .padding([.horizontal, .top])
+                    .animation(.easeInOut, value: authVM.favouriteCoins.contains(coin.id))
             }
 
             
@@ -198,6 +207,7 @@ struct CoinDetails_Previews: PreviewProvider {
         NavigationView {
             CoinDetails(coinVM: CoinsViewModel(), coin: Coin(id: "bitcoin", icon: "https://static.coinstats.app/coins/1650455588819.png", name: "Bitcoin", symbol: "BTC", rank: 1, price: 22008.51, priceBtc: 1, volume: 0, marketCap: 0, availableSupply: 0, totalSupply: 0, priceChange1h: 0, priceChange1d: -2.58, priceChange1w: 0, websiteURL: "", twitterURL: "", exp: [""], contractAddress: "", decimals: 0, redditURL: ""))
                 .environmentObject(NavigationViewModel())
+                .environmentObject(AuthenticationViewModel())
         }
     }
 }

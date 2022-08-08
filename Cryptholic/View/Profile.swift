@@ -15,7 +15,7 @@ struct Profile: View {
             Button {
                 authVM.signOut()
             } label: {
-                BigButton(title: "Sign Out 👋🏻", bgColor: .black)
+                BigButton(title: "Sign Out 👋🏻", bgColor: .black, textColor: .white)
                     .padding()
             }
             Spacer()

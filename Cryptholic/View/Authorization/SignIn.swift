@@ -56,7 +56,7 @@ struct SignIn: View {
                             authVM.signIn(email: email, password: password)
                         }
                     } label: {
-                        BigButton(title: "Sign In", bgColor: .black)
+                        BigButton(title: "Sign In", bgColor: .black, textColor: .white)
                             .padding()
                     }
                     
