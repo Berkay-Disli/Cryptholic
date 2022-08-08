@@ -48,7 +48,12 @@ struct Home: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(coinsVM.coins.coins.sorted{fabs($0.priceChange1d ?? 0) > fabs($1.priceChange1d ?? 0)}.prefix(5), id:\.self) { item in
-                                    TopMoversCell(icon: item.icon, name: item.name, symbol: item.symbol, price: item.price, priceChange: item.priceChange1d ?? 0)
+                                    NavigationLink {
+                                        CoinDetails(coinVM: coinsVM, coin: item)
+                                    } label: {
+                                        TopMoversCell(icon: item.icon, name: item.name, symbol: item.symbol, price: item.price, priceChange: item.priceChange1d ?? 0)
+                                    }
+
                                 }
                                 .padding(.horizontal, 2)
                             }
