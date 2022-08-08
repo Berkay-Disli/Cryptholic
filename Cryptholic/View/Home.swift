@@ -11,8 +11,6 @@ struct Home: View {
     @ObservedObject var coinsVM: CoinsViewModel
     @EnvironmentObject var navVM: NavigationViewModel
     @EnvironmentObject var authVM: AuthenticationViewModel
-    
-    @State private var filtered = [Coin]()
 
     var body: some View {
         NavigationView {
@@ -24,16 +22,20 @@ struct Home: View {
                             .font(.title2).fontWeight(.medium)
                             .padding()
                         VStack {
-                            ScrollView {
-                                ForEach(filtered, id:\.self) { coin in
-                                    NavigationLink {
-                                        CoinDetails(coinVM: coinsVM, coin: coin)
-                                    } label: {
-                                        CoinListCell(showGraph: false, image: coin.icon, name: coin.name, symbol: coin.symbol, price: coin.price, dailyChange: coin.priceChange1d ?? 0)
-                                            .padding(.bottom, 14)
+                            if !authVM.filtered.isEmpty {
+                                ScrollView {
+                                    ForEach(authVM.filtered, id:\.self) { coin in
+                                        NavigationLink {
+                                            CoinDetails(coinVM: coinsVM, coin: coin)
+                                        } label: {
+                                            CoinListCell(showGraph: false, image: coin.icon, name: coin.name, symbol: coin.symbol, price: coin.price, dailyChange: coin.priceChange1d ?? 0)
+                                                .padding(.bottom, 14)
+                                        }
                                     }
+                                    .animation(.easeInOut, value: authVM.filtered)
                                 }
-                                .animation(.easeInOut, value: filtered)
+                            } else {
+                                ProgressView()
                             }
                         }
                         .padding(.horizontal)
@@ -119,6 +121,7 @@ struct Home: View {
                     }
                 }
                 .onAppear {
+                    //self.authVM.filtered.removeAll(keepingCapacity: false)
                     authVM.getUserInfo { success in
                         if success {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -127,7 +130,7 @@ struct Home: View {
                                     let result = coinsVM.coins.coins.filter { $0.id == coinId }
                                     filteredArray.append(result.first!)
                                 }
-                                self.filtered = filteredArray
+                                self.authVM.filtered = filteredArray
                             }
                         }
                     }

@@ -11,7 +11,7 @@ import Firebase
 class AuthenticationViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var favouriteCoins = [String]()
-    
+    @Published var filtered = [Coin]()
     
     
     init() {
@@ -51,7 +51,9 @@ class AuthenticationViewModel: ObservableObject {
         do {
             try Auth.auth().signOut()
             userSession = nil
-            print("User logged out.")
+            favouriteCoins.removeAll(keepingCapacity: false)
+            filtered.removeAll(keepingCapacity: false)
+            print("User logged out. Info cleared.")
         } catch let err {
             print(err.localizedDescription)
         }
@@ -65,7 +67,6 @@ class AuthenticationViewModel: ObservableObject {
             guard let userFavs = snapshot.get("favourites") as? [String] else { return }
             
             self.favouriteCoins = userFavs
-            print("Fonksiyon print: \(self.favouriteCoins)")
         }
         completion(true)
     }
