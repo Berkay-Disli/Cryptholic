@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct IconButton: View {
+    @Environment(\.colorScheme) var colorScheme
     let iconName: String
     var body: some View {
         Image(systemName: iconName)
             .font(.system(size: 18))
-            .foregroundColor(.black)
+            .foregroundColor(Color("black"))
             .frame(width: 50, height: 50)
-            .background(Color(uiColor: .systemGray6))
+            .background(colorScheme == .dark ? Color(uiColor: .darkGray):Color(uiColor: .systemGray6))
             .clipShape(Circle())
     }
 }
 
 struct IconButton_Previews: PreviewProvider {
     static var previews: some View {
-        IconButton(iconName: "star")
+        IconButton(iconName: "bell")
     }
 }

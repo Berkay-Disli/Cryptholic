@@ -37,6 +37,9 @@
 		234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064FA289936FA00DB9E7F /* NavigationViewModel.swift */; };
 		234064FD28993FC300DB9E7F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064FC28993FC300DB9E7F /* Home.swift */; };
 		23864599289B20E10086A2DC /* cryptholic.png in Resources */ = {isa = PBXBuildFile; fileRef = 23864598289B20E10086A2DC /* cryptholic.png */; };
+		23AD217728A28D5F005F0D3C /* presentation-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AD217428A28D5F005F0D3C /* presentation-2.png */; };
+		23AD217828A28D5F005F0D3C /* presentation-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AD217528A28D5F005F0D3C /* presentation-3.png */; };
+		23AD217928A28D5F005F0D3C /* presentation-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AD217628A28D5F005F0D3C /* presentation-1.png */; };
 		23B8A85E28A02CD2009D1C06 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 23B8A85D28A02CD2009D1C06 /* SwiftUICharts */; };
 		23B8A86128A02CE3009D1C06 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 23B8A86028A02CE3009D1C06 /* Kingfisher */; };
 		23BC424628A14FB8004C11D8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 23BC424528A14FB8004C11D8 /* GoogleSignIn */; };
@@ -78,6 +81,9 @@
 		234064FC28993FC300DB9E7F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		23864593289B16420086A2DC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		23864598289B20E10086A2DC /* cryptholic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cryptholic.png; sourceTree = "<group>"; };
+		23AD217428A28D5F005F0D3C /* presentation-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "presentation-2.png"; sourceTree = "<group>"; };
+		23AD217528A28D5F005F0D3C /* presentation-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "presentation-3.png"; sourceTree = "<group>"; };
+		23AD217628A28D5F005F0D3C /* presentation-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "presentation-1.png"; sourceTree = "<group>"; };
 		23BC424728A1500D004C11D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		23BC424828A1534C004C11D8 /* ApplicationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUtility.swift; sourceTree = "<group>"; };
 		23BC424A28A15714004C11D8 /* BigSymbolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigSymbolButton.swift; sourceTree = "<group>"; };
@@ -261,6 +267,9 @@
 		23864597289B20940086A2DC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				23AD217628A28D5F005F0D3C /* presentation-1.png */,
+				23AD217428A28D5F005F0D3C /* presentation-2.png */,
+				23AD217528A28D5F005F0D3C /* presentation-3.png */,
 				23864598289B20E10086A2DC /* cryptholic.png */,
 			);
 			path = images;
@@ -338,11 +347,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23AD217728A28D5F005F0D3C /* presentation-2.png in Resources */,
 				23864599289B20E10086A2DC /* cryptholic.png in Resources */,
 				234064EA28992D8E00DB9E7F /* Preview Assets.xcassets in Resources */,
 				233E815C28A01F8E00D037E4 /* GoogleService-Info.plist in Resources */,
+				23AD217828A28D5F005F0D3C /* presentation-3.png in Resources */,
 				23028C6128A000C500B755D4 /* Launch Screen.storyboard in Resources */,
 				234064E728992D8E00DB9E7F /* Assets.xcassets in Resources */,
+				23AD217928A28D5F005F0D3C /* presentation-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 # Cryptholic 
-**A crypto tracking app by Berkay Dişli.**
+**A crypto tracking app.**
 
 *Work in progress...*
 
@@ -15,11 +15,10 @@
 - Beautiful Animations and Smooth Transitions
 
  
-## Images
-
+# Features
 
 <p align="middle">
-  <img src="images/cryptholic.png" width=100% height=100%>
+  <img src="images/presentation-1.png" width=100% height=100%>
 </p>
 
 
