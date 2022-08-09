@@ -51,6 +51,7 @@ struct CoinsPage: View {
                     }
                 }
                 .searchable(text: $searchText, prompt: "Search for a coin")
+                .disableAutocorrection(true)
                 .scrollDismissesKeyboard(.immediately)
                 
             }

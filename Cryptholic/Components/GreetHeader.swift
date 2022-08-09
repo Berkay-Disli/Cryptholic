@@ -16,6 +16,7 @@ struct GreetHeader: View {
             Text(title1)
                 .font(.largeTitle)
                 .fontWeight(.medium)
+                .foregroundColor(Color("black"))
             Text(title2)
                 .font(.largeTitle)
                 .fontWeight(.medium)

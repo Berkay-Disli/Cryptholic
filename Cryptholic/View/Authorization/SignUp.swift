@@ -10,6 +10,7 @@ import SwiftUI
 struct SignUp: View {
     @EnvironmentObject var authVM: AuthenticationViewModel
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     @State private var name = ""
     @State private var email = ""
     @State private var password = ""
@@ -18,11 +19,10 @@ struct SignUp: View {
         VStack {
             // logo
             VStack(spacing: 0) {
-                Image("logo")
+                Image(colorScheme == .dark ?  "logoFinalBlack":"logoFinal")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 120)
-                    .colorMultiply(.red)
+                    .frame(width: 130)
             }
             .padding(.vertical)
             
@@ -31,6 +31,7 @@ struct SignUp: View {
                 Text("Hello \(name)")
                     .font(.largeTitle)
                     .fontWeight(.medium)
+                    .foregroundColor(Color("black"))
                     .animation(.easeInOut(duration: 0.23))
                 Text("Welcome to Cryptholic!")
                     .font(.largeTitle)
@@ -57,14 +58,14 @@ struct SignUp: View {
                         authVM.createAccount(name: name, email: email, password: password)
                     }
                 } label: {
-                    BigButton(title: "Sign Up", bgColor: .black, textColor: .white)
+                    BigButton(title: "Sign Up", bgColor: Color("bigButtonBlack"), textColor: Color("white"))
                         .padding()
                 }
                 
                 Button {
-                    authVM.signUpWithCredential()
+                    authVM.signInWithCredential()
                 } label: {
-                    BigSymbolButton(title: "Sign Up With Google", bgColor: .gray.opacity(0.3), textColor: .black, image: "google")
+                    BigSymbolButton(title: "Sign Up With Google", bgColor: colorScheme == .dark ? .gray.opacity(0.7):.gray.opacity(0.3), textColor: Color("black"), image: "google")
                         .padding(.horizontal)
                 }
 
@@ -87,6 +88,7 @@ struct SignUp: View {
             .navigationBarBackButtonHidden()
             
         }
+        .background(Color("bg"))
     }
 }
 

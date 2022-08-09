@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignIn: View {
     @EnvironmentObject var authVM: AuthenticationViewModel
+    @Environment(\.colorScheme) var colorScheme
     @State private var email = ""
     @State private var password = ""
     
@@ -17,11 +18,10 @@ struct SignIn: View {
             VStack {
                 //logo
                 VStack(spacing: 0) {
-                    Image("logo")
+                    Image(colorScheme == .dark ?  "logoFinalBlack":"logoFinal")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 120)
-                        .colorMultiply(.red)
+                        .frame(width: 130)
                 }
                 .padding(.vertical)
                 
@@ -56,14 +56,14 @@ struct SignIn: View {
                             authVM.signIn(email: email, password: password)
                         }
                     } label: {
-                        BigButton(title: "Sign In", bgColor: .black, textColor: .white)
+                        BigButton(title: "Sign In", bgColor: Color("bigButtonBlack"), textColor: Color("white"))
                             .padding()
                     }
                     
                     Button {
                         authVM.signInWithCredential()
                     } label: {
-                        BigSymbolButton(title: "Sign In With Google", bgColor: .gray.opacity(0.3), textColor: .black, image: "google")
+                        BigSymbolButton(title: "Sign In With Google", bgColor: colorScheme == .dark ? .gray.opacity(0.7):.gray.opacity(0.3), textColor: Color("black"), image: "google")
                             .padding(.horizontal)
                     }
                     

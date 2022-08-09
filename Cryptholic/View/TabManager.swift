@@ -13,6 +13,8 @@ import SwiftUI
 struct TabManager: View {
     @StateObject var coinsVM = CoinsViewModel()
     @EnvironmentObject var navVM: NavigationViewModel
+    @EnvironmentObject var authVM: AuthenticationViewModel
+
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -63,6 +65,18 @@ struct TabManager: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
+            authVM.getUserInfo { success in
+                if success {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        var filteredArray = [Coin]()
+                        for coinId in authVM.favouriteCoins {
+                            let result = coinsVM.coins.coins.filter { $0.id == coinId }
+                            filteredArray.append(result.first!)
+                        }
+                        self.authVM.filtered = filteredArray
+                    }
+                }
+            }
             navVM.tabSelection = .home
         }
     }

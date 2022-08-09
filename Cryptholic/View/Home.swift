@@ -37,9 +37,20 @@ struct Home: View {
                                     .animation(.easeInOut, value: authVM.filtered)
                                 }
                             } else {
-                                ProgressView()
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .padding()
+                                VStack(spacing: 4) {
+                                    Image(colorScheme == .dark ? "logoFinalBlack":"logoFinal")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 45)
+                                        .padding(.bottom, 8)
+                                    Text("Your watchlist is empty.")
+                                        .foregroundColor(Color("black"))
+                                    Text("Add coins to your favourites.")
+                                        .foregroundColor(.red)
+                                }
+                                .font(.title3)
+                                .fontWeight(.medium)
+                                .frame(maxWidth: .infinity, alignment: .center)
                             }
                         }
                         .padding(.horizontal)
@@ -137,7 +148,7 @@ struct Home: View {
                     //self.authVM.filtered.removeAll(keepingCapacity: false)
                     authVM.getUserInfo { success in
                         if success {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 var filteredArray = [Coin]()
                                 for coinId in authVM.favouriteCoins {
                                     let result = coinsVM.coins.coins.filter { $0.id == coinId }
