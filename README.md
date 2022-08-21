@@ -42,7 +42,7 @@
   <img src="images/presentation-2.png" width=100% height=100%>
 </p>
 <br />
-<p align="middle">
+<p align="left">
     <img src="images/CoinOptions.gif" width="30%" height="30%" />
 </p>
 
@@ -58,7 +58,7 @@
   <img src="images/presentation-3.png" width=100% height=100%>
 </p>
 <br />
-<p align="middle">
+<p align="left">
     <img src="images/DarkMode.gif" width="30%" height="30%" />
 </p>
 
