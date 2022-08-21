@@ -48,11 +48,11 @@
 		23BC424628A14FB8004C11D8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 23BC424528A14FB8004C11D8 /* GoogleSignIn */; };
 		23BC424928A1534C004C11D8 /* ApplicationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC424828A1534C004C11D8 /* ApplicationUtility.swift */; };
 		23BC424B28A15714004C11D8 /* BigSymbolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC424A28A15714004C11D8 /* BigSymbolButton.swift */; };
-		23E5E10928B2DF0A00DC86D1 /* DarkMode.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E10428B2DF0900DC86D1 /* DarkMode.gif */; };
-		23E5E10A28B2DF0A00DC86D1 /* Auth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E10528B2DF0900DC86D1 /* Auth.gif */; };
-		23E5E10B28B2DF0A00DC86D1 /* SideMenu.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E10628B2DF0900DC86D1 /* SideMenu.gif */; };
-		23E5E10C28B2DF0A00DC86D1 /* CoinOptions.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E10728B2DF0A00DC86D1 /* CoinOptions.gif */; };
-		23E5E10D28B2DF0A00DC86D1 /* GoogleSignIn.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E10828B2DF0A00DC86D1 /* GoogleSignIn.gif */; };
+		23E5E11328B2E37200DC86D1 /* CoinOptions.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E10E28B2E37200DC86D1 /* CoinOptions.gif */; };
+		23E5E11428B2E37200DC86D1 /* DarkMode.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E10F28B2E37200DC86D1 /* DarkMode.gif */; };
+		23E5E11528B2E37200DC86D1 /* GoogleSignIn.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E11028B2E37200DC86D1 /* GoogleSignIn.gif */; };
+		23E5E11628B2E37200DC86D1 /* Auth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E11128B2E37200DC86D1 /* Auth.gif */; };
+		23E5E11728B2E37200DC86D1 /* SideMenu.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23E5E11228B2E37200DC86D1 /* SideMenu.gif */; };
 		23EDFF8D28A1821400BCBE63 /* ChartColorRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDFF8C28A1821400BCBE63 /* ChartColorRanges.swift */; };
 		23F50C6B289BBCDE0080E8AC /* CoinDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6A289BBCDE0080E8AC /* CoinDetails.swift */; };
 		23F50C6D289BC1900080E8AC /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F50C6C289BC1900080E8AC /* IconButton.swift */; };
@@ -98,11 +98,11 @@
 		23BC424728A1500D004C11D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		23BC424828A1534C004C11D8 /* ApplicationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUtility.swift; sourceTree = "<group>"; };
 		23BC424A28A15714004C11D8 /* BigSymbolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigSymbolButton.swift; sourceTree = "<group>"; };
-		23E5E10428B2DF0900DC86D1 /* DarkMode.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DarkMode.gif; sourceTree = "<group>"; };
-		23E5E10528B2DF0900DC86D1 /* Auth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Auth.gif; sourceTree = "<group>"; };
-		23E5E10628B2DF0900DC86D1 /* SideMenu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SideMenu.gif; sourceTree = "<group>"; };
-		23E5E10728B2DF0A00DC86D1 /* CoinOptions.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CoinOptions.gif; sourceTree = "<group>"; };
-		23E5E10828B2DF0A00DC86D1 /* GoogleSignIn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GoogleSignIn.gif; sourceTree = "<group>"; };
+		23E5E10E28B2E37200DC86D1 /* CoinOptions.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CoinOptions.gif; sourceTree = "<group>"; };
+		23E5E10F28B2E37200DC86D1 /* DarkMode.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DarkMode.gif; sourceTree = "<group>"; };
+		23E5E11028B2E37200DC86D1 /* GoogleSignIn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GoogleSignIn.gif; sourceTree = "<group>"; };
+		23E5E11128B2E37200DC86D1 /* Auth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Auth.gif; sourceTree = "<group>"; };
+		23E5E11228B2E37200DC86D1 /* SideMenu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SideMenu.gif; sourceTree = "<group>"; };
 		23EDFF8C28A1821400BCBE63 /* ChartColorRanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartColorRanges.swift; sourceTree = "<group>"; };
 		23F50C6A289BBCDE0080E8AC /* CoinDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetails.swift; sourceTree = "<group>"; };
 		23F50C6C289BC1900080E8AC /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
@@ -290,11 +290,11 @@
 				23AD217628A28D5F005F0D3C /* presentation-1.png */,
 				23AD217428A28D5F005F0D3C /* presentation-2.png */,
 				23AD217528A28D5F005F0D3C /* presentation-3.png */,
-				23E5E10528B2DF0900DC86D1 /* Auth.gif */,
-				23E5E10728B2DF0A00DC86D1 /* CoinOptions.gif */,
-				23E5E10428B2DF0900DC86D1 /* DarkMode.gif */,
-				23E5E10828B2DF0A00DC86D1 /* GoogleSignIn.gif */,
-				23E5E10628B2DF0900DC86D1 /* SideMenu.gif */,
+				23E5E11128B2E37200DC86D1 /* Auth.gif */,
+				23E5E10E28B2E37200DC86D1 /* CoinOptions.gif */,
+				23E5E10F28B2E37200DC86D1 /* DarkMode.gif */,
+				23E5E11028B2E37200DC86D1 /* GoogleSignIn.gif */,
+				23E5E11228B2E37200DC86D1 /* SideMenu.gif */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -371,19 +371,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23E5E10928B2DF0A00DC86D1 /* DarkMode.gif in Resources */,
-				23E5E10B28B2DF0A00DC86D1 /* SideMenu.gif in Resources */,
 				23AD217728A28D5F005F0D3C /* presentation-2.png in Resources */,
 				23AD217D28A294A2005F0D3C /* logo.png in Resources */,
+				23E5E11628B2E37200DC86D1 /* Auth.gif in Resources */,
+				23E5E11328B2E37200DC86D1 /* CoinOptions.gif in Resources */,
+				23E5E11428B2E37200DC86D1 /* DarkMode.gif in Resources */,
 				234064EA28992D8E00DB9E7F /* Preview Assets.xcassets in Resources */,
 				233E815C28A01F8E00D037E4 /* GoogleService-Info.plist in Resources */,
-				23E5E10D28B2DF0A00DC86D1 /* GoogleSignIn.gif in Resources */,
+				23E5E11528B2E37200DC86D1 /* GoogleSignIn.gif in Resources */,
 				23AD217828A28D5F005F0D3C /* presentation-3.png in Resources */,
 				23028C6128A000C500B755D4 /* Launch Screen.storyboard in Resources */,
-				23E5E10C28B2DF0A00DC86D1 /* CoinOptions.gif in Resources */,
 				234064E728992D8E00DB9E7F /* Assets.xcassets in Resources */,
-				23E5E10A28B2DF0A00DC86D1 /* Auth.gif in Resources */,
 				23AD217928A28D5F005F0D3C /* presentation-1.png in Resources */,
+				23E5E11728B2E37200DC86D1 /* SideMenu.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
