@@ -2,6 +2,7 @@
 <p align="middle">
   <img src="images/logo.png" width=25% height=25%>
 </p>
+
 **A crypto tracking app.**
 
 *Work in progress...*
