@@ -28,8 +28,7 @@
 </p>
 
 <p align="middle">
-    <img src="images/Auth.gif" width="50%" height="50%" />
-    <img src="images/GoogleSignIn.gif" width="50%" height="50%" />
+    <img src="images/Auth.gif" width="30%" height="30%" /> <img src="images/GoogleSignIn.gif" width="30%" height="30%" />
 </p>
 
 - Firebase Authentication
