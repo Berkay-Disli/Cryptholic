@@ -33,7 +33,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "branch" : "master",
-        "revision" : "4b75409bec8169156610d242e7de9100dcce98a3"
+        "revision" : "3512851cf669f2173f04b415e64a1ded020595a2"
       }
     },
     {
@@ -60,7 +60,7 @@
       "location" : "https://github.com/google/GoogleSignIn-iOS",
       "state" : {
         "branch" : "main",
-        "revision" : "fc99630134eadebbd83fa2b851579dab9c2b00c9"
+        "revision" : "5ce850448e89500aca5b095af7247eb46dc0ca18"
       }
     },
     {
@@ -104,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "2231f92b5af71c78ad2c1450e583bf4a8713b951",
-        "version" : "7.3.1"
+        "revision" : "be1a1acb283a702b99b630f586877ba02234b4cb",
+        "version" : "7.3.2"
       }
     },
     {

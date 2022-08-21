@@ -17,85 +17,88 @@ struct TabManager: View {
 
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            
-            switch navVM.tabSelection {
-            case .home:
-                Home(coinsVM: coinsVM)
-                .transition(AnyTransition.opacity.animation(.easeInOut))
-            case .coins:
-                CoinsPage(coinsVM: coinsVM)
-                .transition(AnyTransition.opacity.animation(.easeInOut))
-            case .profile:
-                Profile()
-                .transition(AnyTransition.opacity.animation(.easeInOut))
-            }
-            
-            if navVM.showTabBar {
-                VStack(spacing: 0) {
-                    Divider()
-                    HStack {
-                        ForEach(Tabs.allCases, id:\.self) { tabItem in
-                            Spacer()
-                            VStack(spacing: 4) {
-                                Image(systemName: navVM.tabSelection == tabItem ? "\(tabItem.iconName).fill" :tabItem.iconName)
-                                    .font(.system(size: 25))
-                                Text(tabItem.title)
-                                    .font(.callout)
-                            }
-                            .padding(.vertical, 4)
-                            .foregroundColor(navVM.tabSelection == tabItem ? Color("black"):.gray)
-                            .onTapGesture {
-                                withAnimation(.easeInOut) {
-                                    navVM.setTab(tab: tabItem)
-                                }
-                            }
-                            
-                            Spacer()
-                        }
-                    }
-                    .padding(.top, 4)
-                    .frame(height: 100, alignment: .top)
-                    .background(Color("bg"))
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                
+                switch navVM.tabSelection {
+                case .home:
+                    Home(coinsVM: coinsVM)
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
+                case .coins:
+                    CoinsPage(coinsVM: coinsVM)
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
+                case .profile:
+                    Profile()
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
                 }
-                .zIndex(1)
-                .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut(duration: 0.25)))
-            }
-            
-            Rectangle().fill(.black.opacity(navVM.sideMenuActive ? 0.2:0))
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            if navVM.sideMenuActive {
-                                withAnimation(.easeInOut) {
-                                    navVM.closeSideMenu()
-                                    //navVM.showTabBar()
-                                        }
+                
+                if navVM.showTabBar {
+                    VStack(spacing: 0) {
+                        Divider()
+                        HStack {
+                            ForEach(Tabs.allCases, id:\.self) { tabItem in
+                                Spacer()
+                                VStack(spacing: 4) {
+                                    Image(systemName: navVM.tabSelection == tabItem ? "\(tabItem.iconName).fill" :tabItem.iconName)
+                                        .font(.system(size: 25))
+                                    Text(tabItem.title)
+                                        .font(.callout)
+                                }
+                                .padding(.vertical, 4)
+                                .foregroundColor(navVM.tabSelection == tabItem ? Color("black"):.gray)
+                                .onTapGesture {
+                                    withAnimation(.easeInOut) {
+                                        navVM.setTab(tab: tabItem)
                                     }
                                 }
-                        .zIndex(1)
-            
-            
-            if navVM.sideMenuActive {
-                SideMenuView(navVM: navVM)
-                .zIndex(1)
-            }
-            
-        }
-        .edgesIgnoringSafeArea(.bottom)
-        .onAppear {
-            authVM.getUserInfo { success in
-                if success {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        var filteredArray = [Coin]()
-                        for coinId in authVM.favouriteCoins {
-                            let result = coinsVM.coins.coins.filter { $0.id == coinId }
-                            filteredArray.append(result.first!)
+                                
+                                Spacer()
+                            }
                         }
-                        self.authVM.filtered = filteredArray
+                        .padding(.top, 4)
+                        .frame(height: 100, alignment: .top)
+                        .background(Color("bg"))
+                    }
+                    .zIndex(1)
+                    .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut(duration: 0.25)))
+                }
+                
+                Rectangle().fill(.black.opacity(navVM.sideMenuActive ? 0.2:0))
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                if navVM.sideMenuActive {
+                                    withAnimation(.easeInOut) {
+                                        navVM.closeSideMenu()
+                                        //navVM.showTabBar()
+                                            }
+                                        }
+                                    }
+                            .zIndex(1)
+                
+                
+                if navVM.sideMenuActive {
+                    SideMenuView(navVM: navVM, authVM: authVM)
+                    .zIndex(1)
+                }
+                
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .onAppear {
+                authVM.getUserInfo { success in
+                    if success {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            var filteredArray = [Coin]()
+                            for coinId in authVM.favouriteCoins {
+                                let result = coinsVM.coins.coins.filter { $0.id == coinId }
+                                filteredArray.append(result.first!)
+                            }
+                            self.authVM.filtered = filteredArray
+                        }
                     }
                 }
+                navVM.tabSelection = .home
             }
-            navVM.tabSelection = .home
+            .toolbar(.hidden)
         }
     }
 }
