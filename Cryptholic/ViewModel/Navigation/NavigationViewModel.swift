@@ -11,6 +11,7 @@ class NavigationViewModel: ObservableObject {
     
     @Published var showTabBar = true
     @Published var tabSelection: Tabs = .home
+    @Published var sideMenuActive = false
     
     init() {
         
@@ -28,4 +29,14 @@ class NavigationViewModel: ObservableObject {
     func closeTabBar() {
         showTabBar = false
     }
+    
+    func openSideMenu() {
+        self.sideMenuActive = true
+    }
+    
+    func closeSideMenu() {
+        self.sideMenuActive = false
+    }
+    
+    
 }

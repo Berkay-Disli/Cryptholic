@@ -36,6 +36,7 @@
 		234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064F728992FAB00DB9E7F /* NavigationTabs.swift */; };
 		234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064FA289936FA00DB9E7F /* NavigationViewModel.swift */; };
 		234064FD28993FC300DB9E7F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234064FC28993FC300DB9E7F /* Home.swift */; };
+		2347C83E28B25A0B00E6941D /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347C83D28B25A0B00E6941D /* SideMenuView.swift */; };
 		23864599289B20E10086A2DC /* cryptholic.png in Resources */ = {isa = PBXBuildFile; fileRef = 23864598289B20E10086A2DC /* cryptholic.png */; };
 		23AD217728A28D5F005F0D3C /* presentation-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AD217428A28D5F005F0D3C /* presentation-2.png */; };
 		23AD217828A28D5F005F0D3C /* presentation-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AD217528A28D5F005F0D3C /* presentation-3.png */; };
@@ -80,6 +81,7 @@
 		234064F728992FAB00DB9E7F /* NavigationTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabs.swift; sourceTree = "<group>"; };
 		234064FA289936FA00DB9E7F /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		234064FC28993FC300DB9E7F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		2347C83D28B25A0B00E6941D /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		23864593289B16420086A2DC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		23864598289B20E10086A2DC /* cryptholic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cryptholic.png; sourceTree = "<group>"; };
 		23AD217428A28D5F005F0D3C /* presentation-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "presentation-2.png"; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				23028C6628A0081F00B755D4 /* CustomInputView.swift */,
 				23028C6828A0082C00B755D4 /* CustomPasswordField.swift */,
 				233E815728A01A3000D037E4 /* GreetHeader.swift */,
+				2347C83D28B25A0B00E6941D /* SideMenuView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				23F50C6F289BC6450080E8AC /* TimezoneRanges.swift in Sources */,
 				23028C6928A0082C00B755D4 /* CustomPasswordField.swift in Sources */,
 				230448C228A05CD600986672 /* AuthenticationViewModel.swift in Sources */,
+				2347C83E28B25A0B00E6941D /* SideMenuView.swift in Sources */,
 				233E815828A01A3000D037E4 /* GreetHeader.swift in Sources */,
 				233E815A28A01AEE00D037E4 /* SignUp.swift in Sources */,
 				234064FB289936FA00DB9E7F /* NavigationViewModel.swift in Sources */,

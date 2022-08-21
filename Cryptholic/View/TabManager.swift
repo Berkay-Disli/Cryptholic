@@ -62,6 +62,24 @@ struct TabManager: View {
                 .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut(duration: 0.25)))
             }
             
+            Rectangle().fill(.black.opacity(navVM.sideMenuActive ? 0.2:0))
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            if navVM.sideMenuActive {
+                                withAnimation(.easeInOut) {
+                                    navVM.closeSideMenu()
+                                    //navVM.showTabBar()
+                                        }
+                                    }
+                                }
+                        .zIndex(1)
+            
+            
+            if navVM.sideMenuActive {
+                SideMenuView(navVM: navVM)
+                .zIndex(1)
+            }
+            
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {

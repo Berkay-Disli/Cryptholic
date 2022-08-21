@@ -173,7 +173,16 @@ struct Home: View {
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Image(systemName: "line.3.horizontal")
+                    Button {
+                        // open sidemenu --- ADD Drag Gesture
+                        withAnimation(.easeInOut) {
+                            navVM.openSideMenu()
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .foregroundColor(.black)
+                    }
+
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
