@@ -27,10 +27,10 @@
   <img src="images/presentation-1.png" width=100% height=100%>
 </p>
 <br />
-<p align="left">
+<p align="middle">
     <img src="images/Auth.gif" width="30%" height="30%" /> <img src="images/GoogleSignIn.gif" width="30%" height="30%" />
 </p>
-<br />
+
 - Firebase Authentication
 - Google Sign In
 - Providing Email/Password Authentication
@@ -42,10 +42,10 @@
   <img src="images/presentation-2.png" width=100% height=100%>
 </p>
 <br />
-<p align="left">
+<p align="middle">
     <img src="images/CoinOptions.gif" width="30%" height="30%" />
 </p>
-<br />
+
 - Filtering the Coin List w/ SwiftUI's **Searchable**
 - Coin Details Page with **Price Info** and **Data Visualisation**
 - Multiple Timestamps Support for Better Analysis
@@ -58,10 +58,10 @@
   <img src="images/presentation-3.png" width=100% height=100%>
 </p>
 <br />
-<p align="left">
+<p align="middle">
     <img src="images/DarkMode.gif" width="30%" height="30%" />
 </p>
-<br />
+
 - Dark Mode Matches Your System Scheme
 - UI is Re-Designed for Dark Scheme
 
@@ -70,7 +70,7 @@
 <p align="left">
     <img src="images/SideMenu.gif" width="30%" height="30%" />
 </p>
-<br />
+
 
 
 
