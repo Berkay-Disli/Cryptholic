@@ -11,13 +11,14 @@ struct SideMenuOptionItems: View {
     let icon: String
     let title: String
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 22) {
             HStack {
                 Image(systemName: icon)
                     .font(.title3)
                 
                 Text(title)
             }
+            .fontWeight(.medium)
             .foregroundColor(.black)
             .padding(.leading)
             

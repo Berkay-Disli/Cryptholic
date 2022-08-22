@@ -78,7 +78,7 @@ struct TabManager: View {
                 
                 if navVM.sideMenuActive {
                     SideMenuView(navVM: navVM, authVM: authVM)
-                    .zIndex(1)
+                    .zIndex(2)
                 }
                 
             }

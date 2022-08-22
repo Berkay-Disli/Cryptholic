@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import GoogleSignIn
 
+
 class AuthenticationViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var favouriteCoins = [String]()
@@ -26,8 +27,12 @@ class AuthenticationViewModel: ObservableObject {
             } else {
                 guard let user = result?.user else { return }
                 self.userSession = user
-                print("User created: \(user.email ?? "email error")")
-                
+                // Update Display Name
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                changeRequest?.displayName = name
+                changeRequest?.commitChanges { error in
+                    print(error?.localizedDescription ?? "ERROR: No error info.")
+                }
                 let userData = ["username": name, "email": email, "favourites": [String](), "nativeUser": true] as [String:Any]
                 Firestore.firestore().collection("users").document(user.uid).setData(userData) { error in
                     if let error { print(error.localizedDescription)} else {

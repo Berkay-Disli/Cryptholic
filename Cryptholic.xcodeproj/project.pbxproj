@@ -20,6 +20,8 @@
 		230AF61E289F0DEE001BCF72 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF61D289F0DED001BCF72 /* BigButton.swift */; };
 		2314F5D228B2A0E800961E77 /* SideMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F5D128B2A0E800961E77 /* SideMenuOptions.swift */; };
 		2314F5D428B2A65E00961E77 /* SideMenuOptionItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F5D328B2A65E00961E77 /* SideMenuOptionItems.swift */; };
+		231E9A1628B3ADAB002CD5F0 /* SideMenuBigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E9A1528B3ADAB002CD5F0 /* SideMenuBigButton.swift */; };
+		231E9A1828B3B71D002CD5F0 /* NewSideMenu.gif in Resources */ = {isa = PBXBuildFile; fileRef = 231E9A1728B3B71D002CD5F0 /* NewSideMenu.gif */; };
 		23242DDC289A63BB00B93757 /* CoinsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DDB289A63BB00B93757 /* CoinsPage.swift */; };
 		23242DE1289A641D00B93757 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DE0289A641D00B93757 /* Coins.swift */; };
 		23242DE4289A64FE00B93757 /* CoinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23242DE3289A64FE00B93757 /* CoinsViewModel.swift */; };
@@ -70,6 +72,8 @@
 		230AF61D289F0DED001BCF72 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		2314F5D128B2A0E800961E77 /* SideMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptions.swift; sourceTree = "<group>"; };
 		2314F5D328B2A65E00961E77 /* SideMenuOptionItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionItems.swift; sourceTree = "<group>"; };
+		231E9A1528B3ADAB002CD5F0 /* SideMenuBigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuBigButton.swift; sourceTree = "<group>"; };
+		231E9A1728B3B71D002CD5F0 /* NewSideMenu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NewSideMenu.gif; sourceTree = "<group>"; };
 		23242DDB289A63BB00B93757 /* CoinsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsPage.swift; sourceTree = "<group>"; };
 		23242DE0289A641D00B93757 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
 		23242DE3289A64FE00B93757 /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 				233E815728A01A3000D037E4 /* GreetHeader.swift */,
 				2347C83D28B25A0B00E6941D /* SideMenuView.swift */,
 				2314F5D328B2A65E00961E77 /* SideMenuOptionItems.swift */,
+				231E9A1528B3ADAB002CD5F0 /* SideMenuBigButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				23E5E10F28B2E37200DC86D1 /* DarkMode.gif */,
 				23E5E11028B2E37200DC86D1 /* GoogleSignIn.gif */,
 				23E5E11228B2E37200DC86D1 /* SideMenu.gif */,
+				231E9A1728B3B71D002CD5F0 /* NewSideMenu.gif */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23AD217728A28D5F005F0D3C /* presentation-2.png in Resources */,
+				231E9A1828B3B71D002CD5F0 /* NewSideMenu.gif in Resources */,
 				23AD217D28A294A2005F0D3C /* logo.png in Resources */,
 				23E5E11628B2E37200DC86D1 /* Auth.gif in Resources */,
 				23E5E11328B2E37200DC86D1 /* CoinOptions.gif in Resources */,
@@ -420,6 +427,7 @@
 				234064F828992FAB00DB9E7F /* NavigationTabs.swift in Sources */,
 				23028C6328A0045700B755D4 /* RoundedShape.swift in Sources */,
 				234064E328992D8D00DB9E7F /* CryptholicApp.swift in Sources */,
+				231E9A1628B3ADAB002CD5F0 /* SideMenuBigButton.swift in Sources */,
 				234064FD28993FC300DB9E7F /* Home.swift in Sources */,
 				234064F528992ECD00DB9E7F /* TabManager.swift in Sources */,
 				23242DEE289AAA6A00B93757 /* RefreshableScrollView.swift in Sources */,

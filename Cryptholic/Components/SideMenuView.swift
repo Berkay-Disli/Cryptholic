@@ -31,23 +31,43 @@ struct SideMenuView: View {
             .padding(.top, 38)
             
             // User
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .center, spacing: 4) {
                 if let user = authVM.userSession {
+                    Image("logoFinal")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70, height: 70)
+                        .clipShape(Circle())
+                        .padding(.bottom, 4)
+                        .offset(x: -8)
                     Text(user.displayName ?? "No Name")
                         .font(.title)
                         .fontWeight(.medium)
-                    Text(verbatim: user.email ?? "No Email")
-                        .foregroundColor(.gray)
                 }
+                /*Image("logoFinal")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 70, height: 70)
+                    .clipShape(Circle())
+                    .padding(.bottom, 4)
+                    .offset(x: -8)
+                Text("Berkay Dişli")
+                    .font(.title)
+                    .fontWeight(.medium)*/
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity)
             .padding(.leading)
             
-            Divider().background(.black.opacity(0.4))
-                .padding(.bottom)
+            NavigationLink {
+                Profile()
+            } label: {
+                SideMenuBigButton(bgColor: Color(uiColor: .systemGray5), text: "Profile")
+            }
+            .padding(.bottom, 20)
+
             
             // Options
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 22) {
                 ForEach(SideMenuOptions.allCases, id:\.self) { item in
                     NavigationLink {
                         item.destination
@@ -60,16 +80,18 @@ struct SideMenuView: View {
             
             Spacer()
             
-            Text("Created by Berkay Dişli")
-                .font(.footnote)
-                .fontWeight(.medium)
-                .padding(.bottom, 40)
+            Button {
+                authVM.signOut()
+            } label: {
+                SideMenuBigButton(bgColor: Color(uiColor: .systemGray5), text: "Sign Out")
+            }
+            .padding(.bottom, 45)
         }
         .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.height)
-        .background(.white)
+        .background(Color.white.shadow(color: .gray.opacity(0.2), radius: 5, x: 5, y: 0))
         .offset(x: navVM.sideMenuActive ? -UIScreen.main.bounds.width * 0.175:-UIScreen.main.bounds.width * 0.825, y: 0)
         .transition(AnyTransition.move(edge: .leading).animation(.easeInOut))
-        .edgesIgnoringSafeArea(.horizontal)
+        .ignoresSafeArea()
     }
 }
 

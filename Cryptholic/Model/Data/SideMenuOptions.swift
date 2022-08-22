@@ -9,12 +9,10 @@ import Foundation
 import SwiftUI
 
 enum SideMenuOptions: String, CaseIterable {
-    case profile, favourites, topics, news, professionals, settingsSecurity
+    case favourites, topics, news, professionals, settingsSecurity
     
     var icon: String {
         switch self {
-        case .profile:
-            return "person"
         case .favourites:
             return "star"
         case .topics:
@@ -30,8 +28,6 @@ enum SideMenuOptions: String, CaseIterable {
     
     var title: String {
         switch self {
-        case .profile:
-            return "Profile"
         case .favourites:
             return "Favourites"
         case .topics:
@@ -39,7 +35,7 @@ enum SideMenuOptions: String, CaseIterable {
         case .news:
             return "News"
         case .professionals:
-            return "Crypholic for Professionals"
+            return "Cryptholic for Professionals"
         case .settingsSecurity:
             return "Settings"
         }
@@ -47,8 +43,6 @@ enum SideMenuOptions: String, CaseIterable {
     
     var destination: some View {
         switch self {
-        case .profile:
-            return Profile()
         case .favourites:
             return Profile()
         case .topics:
