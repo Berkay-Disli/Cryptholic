@@ -68,7 +68,7 @@
 
 ## Side Menu - New Design
 <br />
-<p align="left">
+<p align="middle">
     <img src="images/SideMenu.gif" width="30%" height="30%" /><img src="images/NewSideMenu.gif" width="30%" height="30%" />
 </p>
 
