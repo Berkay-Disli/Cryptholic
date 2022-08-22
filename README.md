@@ -66,10 +66,10 @@
 - Dark Mode Matches Your System Scheme
 - UI is Re-Designed for Dark Scheme
 
-## Side Menu
+## Side Menu - New Design
 <br />
 <p align="left">
-    <img src="images/SideMenu.gif" width="30%" height="30%" />
+    <img src="images/SideMenu.gif" width="30%" height="30%" /><img src="images/NewSideMenu.gif" width="30%" height="30%" />
 </p>
 
 
