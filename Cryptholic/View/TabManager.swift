@@ -14,7 +14,7 @@ struct TabManager: View {
     @StateObject var coinsVM = CoinsViewModel()
     @EnvironmentObject var navVM: NavigationViewModel
     @EnvironmentObject var authVM: AuthenticationViewModel
-
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {

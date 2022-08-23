@@ -13,7 +13,7 @@ struct SideMenuBigButton: View {
     
     var body: some View {
         Text(text)
-            .foregroundColor(.black)
+            .foregroundColor(Color("black"))
             .fontWeight(.medium)
             .frame(maxWidth: .infinity)
             .frame(height: 50)

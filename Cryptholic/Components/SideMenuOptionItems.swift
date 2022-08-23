@@ -19,7 +19,7 @@ struct SideMenuOptionItems: View {
                 Text(title)
             }
             .fontWeight(.medium)
-            .foregroundColor(.black)
+            .foregroundColor(Color("black"))
             .padding(.leading)
             
             Divider()

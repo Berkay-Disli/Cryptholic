@@ -12,7 +12,8 @@ import Firebase
 struct SideMenuView: View {
     @ObservedObject var navVM: NavigationViewModel
     @ObservedObject var authVM: AuthenticationViewModel
-    
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         VStack {
             Button {
@@ -22,7 +23,7 @@ struct SideMenuView: View {
             } label: {
                 Image(systemName: "xmark")
                     .font(.title3)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("black"))
                     .rotationEffect(Angle(degrees: navVM.sideMenuActive ? 0:180))
                     .animation(.easeInOut, value: navVM.sideMenuActive)
             }
@@ -33,7 +34,7 @@ struct SideMenuView: View {
             // User
             VStack(alignment: .center, spacing: 4) {
                 if let user = authVM.userSession {
-                    Image("logoFinal")
+                    Image(colorScheme == .dark ? "logoFinalBlack" : "logoFinal")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70, height: 70)
@@ -43,8 +44,9 @@ struct SideMenuView: View {
                     Text(user.displayName ?? "No Name")
                         .font(.title)
                         .fontWeight(.medium)
+                        .foregroundColor(Color("black"))
                 }
-                /*Image("logoFinal")
+                /*Image(colorScheme == .dark ? "logoFinalBlack" : "logoFinal")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 70, height: 70)
@@ -53,7 +55,8 @@ struct SideMenuView: View {
                     .offset(x: -8)
                 Text("Berkay Dişli")
                     .font(.title)
-                    .fontWeight(.medium)*/
+                    .fontWeight(.medium)
+                    .foregroundColor(Color("black"))*/
             }
             .frame(maxWidth: .infinity)
             .padding(.leading)
@@ -61,7 +64,7 @@ struct SideMenuView: View {
             NavigationLink {
                 Profile()
             } label: {
-                SideMenuBigButton(bgColor: Color(uiColor: .systemGray5), text: "Profile")
+                SideMenuBigButton(bgColor: Color("lightGray"), text: "Profile")
             }
             .padding(.bottom, 20)
 
@@ -83,12 +86,12 @@ struct SideMenuView: View {
             Button {
                 authVM.signOut()
             } label: {
-                SideMenuBigButton(bgColor: Color(uiColor: .systemGray5), text: "Sign Out")
+                SideMenuBigButton(bgColor: Color("lightGray"), text: "Sign Out")
             }
             .padding(.bottom, 45)
         }
         .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.height)
-        .background(Color.white.shadow(color: .gray.opacity(0.2), radius: 5, x: 5, y: 0))
+        .background(Color("bg").shadow(color: colorScheme == .dark ? .black : .gray.opacity(0.2), radius: 5, x: 5, y: 0))
         .offset(x: navVM.sideMenuActive ? -UIScreen.main.bounds.width * 0.175:-UIScreen.main.bounds.width * 0.825, y: 0)
         .transition(AnyTransition.move(edge: .leading).animation(.easeInOut))
         .ignoresSafeArea()

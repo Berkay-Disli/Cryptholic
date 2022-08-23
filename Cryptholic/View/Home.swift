@@ -180,7 +180,7 @@ struct Home: View {
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("black"))
                     }
 
                 }
