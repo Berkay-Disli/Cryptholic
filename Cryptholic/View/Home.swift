@@ -170,7 +170,6 @@ struct Home: View {
             .edgesIgnoringSafeArea(.bottom) // Optional
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
-            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
