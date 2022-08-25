@@ -11,6 +11,7 @@ struct Profile: View {
     @EnvironmentObject var authVM: AuthenticationViewModel
     @EnvironmentObject var navVM: NavigationViewModel
     @State private var notificationsEnabled = true
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {
@@ -27,15 +28,16 @@ struct Profile: View {
                                     .font(.largeTitle)
                                     .fontWeight(.medium)
                             }
-                            
+                            /*
                             Text(verbatim: "berkay.dsli@gmail.com")
                                 .foregroundColor(.gray)
                             Text("Berkay Dişli")
                                 .font(.largeTitle)
                                 .fontWeight(.medium)
+                             */
                         }
                         Spacer()
-                        Image("logoFinal")
+                        Image(colorScheme == .dark ? "logoFinalBlack":"logoFinal")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 65, height: 65)
@@ -59,7 +61,7 @@ struct Profile: View {
                         Button {
                             // navigate to favourites
                         } label: {
-                            BigButton(title: "See All", bgColor: Color(uiColor: .systemGray5), textColor: .black)
+                            BigButton(title: "See All", bgColor: Color("lightGray"), textColor: Color("black"))
                         }
 
                     }
@@ -68,6 +70,9 @@ struct Profile: View {
                     
                     Divider()
                     
+                    // This options menu will NOT be completely functional
+                    // Therefore i've hardcoded all the items seperately
+                    // But in reality, this is not the ideal way.
                     VStack(alignment: .leading) {
                         Text("Account")
                             .font(.title2)
@@ -78,7 +83,7 @@ struct Profile: View {
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("black"))
                         .frame(height: 60)
                         
                         // Native Currency
@@ -101,7 +106,7 @@ struct Profile: View {
                                 Spacer()
                                 Image(systemName: "chevron.right")
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("black"))
                             .frame(height: 60)
                         }
                         
@@ -111,7 +116,7 @@ struct Profile: View {
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("black"))
                         .frame(height: 60)
                         
                         // Privacy
@@ -120,28 +125,22 @@ struct Profile: View {
                             Spacer()
                             Image(systemName: "chevron.right")
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("black"))
                         .frame(height: 60)
                         
                         // Notification
-                        Menu {
-                            Toggle("Enabled", isOn: $notificationsEnabled)
-                        } label: {
-                            HStack {
-                                Text("Notification Settings")
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                            }
-                        }
-                        .foregroundColor(.black)
+                        Toggle("Notifications", isOn: $notificationsEnabled)
+                        .foregroundColor(Color("black"))
                         .frame(height: 60)
                         
-                        BigButton(title: "Sign Out", bgColor: Color(uiColor: .systemGray5), textColor: .red)
-                            .padding(.bottom, 75)
-                        
-                        
-                        
-                        
+                        // Sign Out
+                        Button {
+                            authVM.signOut()
+                        } label: {
+                            BigButton(title: "Sign Out", bgColor: Color("lightGray"), textColor: .red)
+                                .padding(.bottom, 75)
+                        }
+
                         
 
                     }
