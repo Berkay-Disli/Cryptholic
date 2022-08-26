@@ -44,15 +44,15 @@ enum SideMenuOptions: String, CaseIterable {
     var destination: some View {
         switch self {
         case .favourites:
-            return Profile()
+            return Profile(coinsVM: CoinsViewModel())
         case .topics:
-            return Profile()
+            return Profile(coinsVM: CoinsViewModel())
         case .news:
-            return Profile()
+            return Profile(coinsVM: CoinsViewModel())
         case .professionals:
-            return Profile()
+            return Profile(coinsVM: CoinsViewModel())
         case .settingsSecurity:
-            return Profile()
+            return Profile(coinsVM: CoinsViewModel())
         }
     }
 }

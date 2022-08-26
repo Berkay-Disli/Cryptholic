@@ -10,6 +10,7 @@ import SwiftUI
 struct Profile: View {
     @EnvironmentObject var authVM: AuthenticationViewModel
     @EnvironmentObject var navVM: NavigationViewModel
+    @ObservedObject var coinsVM: CoinsViewModel
     @State private var notificationsEnabled = true
     @Environment(\.colorScheme) var colorScheme
     
@@ -34,7 +35,7 @@ struct Profile: View {
                             Text("Berkay Dişli")
                                 .font(.largeTitle)
                                 .fontWeight(.medium)
-                             */
+                            */
                         }
                         Spacer()
                         Image(colorScheme == .dark ? "logoFinalBlack":"logoFinal")
@@ -51,11 +52,35 @@ struct Profile: View {
                         Text("Favourites")
                             .font(.title2)
                             .fontWeight(.medium)
+                            .foregroundColor(.red)
+                            .padding(.bottom, 8)
                         
                         // Favourites, only first 3 item.
-                        ForEach(1...3, id:\.self) { item in
-                            CoinListCell(showGraph: false, image: "https://static.coinstats.app/coins/1650455588819.png", name: "Bitcoin", symbol: "BTC", price: 40981.51, dailyChange: 15.26)
-                                .padding(.bottom, 14)
+                        if !authVM.filtered.isEmpty {
+                            ScrollView {
+                                ForEach(authVM.filtered, id:\.self) { coin in
+                                    NavigationLink {
+                                        CoinDetails(coinVM: coinsVM, coin: coin)
+                                    } label: {
+                                        CoinListCell(showGraph: false, image: coin.icon, name: coin.name, symbol: coin.symbol, price: coin.price, dailyChange: coin.priceChange1d ?? 0)
+                                            .padding(.bottom, 14)
+                                    }
+                                }
+                                .animation(.easeInOut, value: authVM.filtered)
+                            }
+                        } else {
+                            VStack(spacing: 4) {
+                                Text("😶")
+                                    .font(.system(size: 50))
+                                Text("No Favourites.")
+                                    .foregroundColor(Color("black"))
+                                Text("Add coins to your list.")
+                                    .foregroundColor(.red)
+                            }
+                            .font(.title3)
+                            .fontWeight(.medium)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.bottom)
                         }
                         
                         Button {
@@ -153,6 +178,21 @@ struct Profile: View {
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                authVM.getUserInfo { success in
+                    if success {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            var filteredArray = [Coin]()
+                            for coinId in authVM.favouriteCoins {
+                                let result = coinsVM.coins.coins.filter { $0.id == coinId }
+                                filteredArray.append(result.first!)
+                            }
+                            self.authVM.filtered = filteredArray
+                        }
+                    }
+                }
+                navVM.openTabBar()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -177,8 +217,8 @@ struct Profile: View {
 
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
-            Profile()
+        Profile(coinsVM: CoinsViewModel())
                 .environmentObject(AuthenticationViewModel())
-
+                .environmentObject(NavigationViewModel())
     }
 }

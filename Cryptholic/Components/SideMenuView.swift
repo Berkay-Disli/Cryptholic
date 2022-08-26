@@ -12,6 +12,7 @@ import Firebase
 struct SideMenuView: View {
     @ObservedObject var navVM: NavigationViewModel
     @ObservedObject var authVM: AuthenticationViewModel
+    @ObservedObject var coinsVM: CoinsViewModel
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
@@ -62,7 +63,7 @@ struct SideMenuView: View {
             .padding(.leading)
             
             NavigationLink {
-                Profile()
+                Profile(coinsVM: coinsVM)
             } label: {
                 SideMenuBigButton(bgColor: Color("lightGray"), text: "Profile")
             }
@@ -100,7 +101,7 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(navVM: NavigationViewModel(), authVM: AuthenticationViewModel())
+        SideMenuView(navVM: NavigationViewModel(), authVM: AuthenticationViewModel(), coinsVM: CoinsViewModel())
     }
 }
 

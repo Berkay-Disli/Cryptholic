@@ -28,7 +28,7 @@ struct TabManager: View {
                     CoinsPage(coinsVM: coinsVM)
                     .transition(AnyTransition.opacity.animation(.easeInOut))
                 case .profile:
-                    Profile()
+                    Profile(coinsVM: coinsVM)
                     .transition(AnyTransition.opacity.animation(.easeInOut))
                 }
                 
@@ -77,7 +77,7 @@ struct TabManager: View {
                 
                 
                 if navVM.sideMenuActive {
-                    SideMenuView(navVM: navVM, authVM: authVM)
+                    SideMenuView(navVM: navVM, authVM: authVM, coinsVM: coinsVM)
                     .zIndex(2)
                 }
                 
