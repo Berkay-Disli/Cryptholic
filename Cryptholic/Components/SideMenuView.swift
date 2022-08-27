@@ -14,7 +14,8 @@ struct SideMenuView: View {
     @ObservedObject var authVM: AuthenticationViewModel
     @ObservedObject var coinsVM: CoinsViewModel
     @Environment(\.colorScheme) var colorScheme
-
+    @State private var showSignOutAlert = false
+    
     var body: some View {
         VStack {
             Button {
@@ -87,12 +88,21 @@ struct SideMenuView: View {
             Spacer()
             
             Button {
-                authVM.signOut()
-                navVM.closeSideMenu()
+                showSignOutAlert.toggle()
             } label: {
                 SideMenuBigButton(bgColor: Color("lightGray"), text: "Sign Out")
             }
             .padding(.bottom, 45)
+            .alert("Signing Out", isPresented: $showSignOutAlert) {
+                Button(role: .destructive) {
+                    authVM.signOut()
+                    navVM.closeSideMenu()
+                } label: {
+                    Text("Sign Out")
+                }
+            } message: {
+                Text("Do you want to sign out?")
+            }
             .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
         }
         .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.height)

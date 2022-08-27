@@ -13,6 +13,7 @@ struct Profile: View {
     @ObservedObject var coinsVM: CoinsViewModel
     @State private var notificationsEnabled = true
     @Environment(\.colorScheme) var colorScheme
+    @State private var showSignOutAlert = false
     
     var body: some View {
         NavigationView {
@@ -160,10 +161,19 @@ struct Profile: View {
                         
                         // Sign Out
                         Button {
-                            authVM.signOut()
+                            showSignOutAlert.toggle()
                         } label: {
                             BigButton(title: "Sign Out", bgColor: Color("lightGray"), textColor: .red)
                                 .padding(.bottom, 75)
+                        }
+                        .alert("Signing Out", isPresented: $showSignOutAlert) {
+                            Button(role: .destructive) {
+                                authVM.signOut()
+                            } label: {
+                                Text("Sign Out")
+                            }
+                        } message: {
+                            Text("Do you want to sign out?")
                         }
                         .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
 

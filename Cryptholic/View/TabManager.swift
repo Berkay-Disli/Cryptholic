@@ -51,14 +51,12 @@ struct TabManager: View {
                                         navVM.setTab(tab: tabItem)
                                     }
                                 }
-                                
                                 Spacer()
                             }
                         }
                         .padding(.top, 4)
                         .frame(height: 100, alignment: .top)
-                        .if(colorScheme == .light) { $0.background(.white)}
-                        .if(colorScheme == .dark) { $0.background(.ultraThinMaterial)}
+                        .background(Color("bg"))
                     }
                     .zIndex(1)
                     .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut(duration: 0.25)))
