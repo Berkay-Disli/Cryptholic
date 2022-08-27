@@ -14,7 +14,8 @@ class AuthenticationViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var favouriteCoins = [String]()
     @Published var filtered = [Coin]()
-    
+    @Published var alertMessage = ""
+    @Published var showAlert = false
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -24,6 +25,8 @@ class AuthenticationViewModel: ObservableObject {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error {
                 print(error.localizedDescription)
+                self.alertMessage = error.localizedDescription
+                self.showAlert = true
             } else {
                 guard let user = result?.user else { return }
                 self.userSession = user
@@ -45,7 +48,11 @@ class AuthenticationViewModel: ObservableObject {
     
     func signIn(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error { print(error.localizedDescription) } else {
+            if let error {
+                print(error.localizedDescription)
+                self.alertMessage = error.localizedDescription
+                self.showAlert = true
+            } else {
                 guard let user = result?.user else { return }
                 self.userSession = user
                 print("User logged in: \(user.email ?? "email error")")
@@ -79,6 +86,8 @@ class AuthenticationViewModel: ObservableObject {
         Auth.auth().signIn(with: credential) { result, error in
                 if let error {
                     print(error.localizedDescription)
+                    self.alertMessage = error.localizedDescription
+                    self.showAlert = true
                     return
                 }
             guard let user = result?.user else { return }
@@ -108,6 +117,8 @@ class AuthenticationViewModel: ObservableObject {
             print("User logged out. Info cleared.")
         } catch let err {
             print(err.localizedDescription)
+            self.alertMessage = err.localizedDescription
+            self.showAlert = true
         }
     }
     

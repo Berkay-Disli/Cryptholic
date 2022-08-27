@@ -59,6 +59,7 @@ struct SignIn: View {
                         BigButton(title: "Sign In", bgColor: Color("bigButtonBlack"), textColor: Color("white"))
                             .padding()
                     }
+                    .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
                     
                     Button {
                         authVM.signInWithCredential()
@@ -66,6 +67,7 @@ struct SignIn: View {
                         BigSymbolButton(title: "Sign In With Google", bgColor: colorScheme == .dark ? .gray.opacity(0.7):.gray.opacity(0.3), textColor: Color("black"), image: "google")
                             .padding(.horizontal)
                     }
+                    .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
                     
                     Spacer()
                     
@@ -83,6 +85,7 @@ struct SignIn: View {
                 }
                 .padding(.bottom)
             }
+            .background(Color("bg"))
         }
     }
 }

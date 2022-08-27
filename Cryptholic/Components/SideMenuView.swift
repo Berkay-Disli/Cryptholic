@@ -35,7 +35,7 @@ struct SideMenuView: View {
             // User
             VStack(alignment: .center, spacing: 4) {
                 if let user = authVM.userSession {
-                    Image(colorScheme == .dark ? "logoFinalBlack" : "logoFinal")
+                    Image(colorScheme == .dark ? "logoFinalBlackRemoved" : "logoFinal")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70, height: 70)
@@ -47,7 +47,8 @@ struct SideMenuView: View {
                         .fontWeight(.medium)
                         .foregroundColor(Color("black"))
                 }
-                /*Image(colorScheme == .dark ? "logoFinalBlack" : "logoFinal")
+                /*
+                Image(colorScheme == .dark ? "logoFinalBlackRemoved" : "logoFinal")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 70, height: 70)
@@ -57,7 +58,8 @@ struct SideMenuView: View {
                 Text("Berkay Dişli")
                     .font(.title)
                     .fontWeight(.medium)
-                    .foregroundColor(Color("black"))*/
+                    .foregroundColor(Color("black"))
+                 */
             }
             .frame(maxWidth: .infinity)
             .padding(.leading)
@@ -86,13 +88,17 @@ struct SideMenuView: View {
             
             Button {
                 authVM.signOut()
+                navVM.closeSideMenu()
             } label: {
                 SideMenuBigButton(bgColor: Color("lightGray"), text: "Sign Out")
             }
             .padding(.bottom, 45)
+            .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
         }
         .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.height)
-        .background(Color("bg").shadow(color: colorScheme == .dark ? .black : .gray.opacity(0.2), radius: 5, x: 5, y: 0))
+        //.background(Color("bg").shadow(color: colorScheme == .dark ? .black : .gray.opacity(0.2), radius: 5, x: 5, y: 0))
+        .if(colorScheme == .dark) { $0.background(.ultraThinMaterial) }
+        .if(colorScheme == .light) { $0.background(.white) }
         .offset(x: navVM.sideMenuActive ? -UIScreen.main.bounds.width * 0.175:-UIScreen.main.bounds.width * 0.825, y: 0)
         .transition(AnyTransition.move(edge: .leading).animation(.easeInOut))
         .ignoresSafeArea()

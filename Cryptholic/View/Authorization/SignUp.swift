@@ -61,6 +61,7 @@ struct SignUp: View {
                     BigButton(title: "Sign Up", bgColor: Color("bigButtonBlack"), textColor: Color("white"))
                         .padding()
                 }
+                .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
                 
                 Button {
                     authVM.signInWithCredential()
@@ -68,6 +69,7 @@ struct SignUp: View {
                     BigSymbolButton(title: "Sign Up With Google", bgColor: colorScheme == .dark ? .gray.opacity(0.7):.gray.opacity(0.3), textColor: Color("black"), image: "google")
                         .padding(.horizontal)
                 }
+                .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
 
                 
                 Spacer()

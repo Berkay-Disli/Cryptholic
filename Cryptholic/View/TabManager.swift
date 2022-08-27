@@ -45,7 +45,7 @@ struct TabManager: View {
                                         .font(.callout)
                                 }
                                 .padding(.vertical, 4)
-                                .foregroundColor(navVM.tabSelection == tabItem ? Color("black"):.gray)
+                                .foregroundColor(navVM.tabSelection == tabItem ? Color("black"):colorScheme == .dark ? Color(uiColor: .lightGray):.gray)
                                 .onTapGesture {
                                     withAnimation(.easeInOut) {
                                         navVM.setTab(tab: tabItem)
@@ -57,7 +57,8 @@ struct TabManager: View {
                         }
                         .padding(.top, 4)
                         .frame(height: 100, alignment: .top)
-                        .background(Color("bg"))
+                        .if(colorScheme == .light) { $0.background(.white)}
+                        .if(colorScheme == .dark) { $0.background(.ultraThinMaterial)}
                     }
                     .zIndex(1)
                     .transition(AnyTransition.scale.combined(with: AnyTransition.opacity).animation(.easeInOut(duration: 0.25)))

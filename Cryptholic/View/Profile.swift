@@ -165,6 +165,7 @@ struct Profile: View {
                             BigButton(title: "Sign Out", bgColor: Color("lightGray"), textColor: .red)
                                 .padding(.bottom, 75)
                         }
+                        .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
 
                         
 
