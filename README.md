@@ -73,7 +73,7 @@
   <img src="images/presentation-3.png" width=100% height=100%>
 </p>
 <br />
-<p align="left">
+<p align="middle">
     <img src="images/DarkMode.gif" width="30%" height="30%" /><img src="images/sideMenuNewDark.gif" width="30%" height="30%" />
 </p>
 
