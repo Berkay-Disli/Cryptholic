@@ -56,7 +56,7 @@
 ## Side Menu - New Designs
 <br />
 <p align="middle">
-    <img src="images/SideMenu.gif" width="30%" height="30%" /><img src="images/NewSideMenu.gif" width="30%" height="30%" />
+    <img src="images/SideMenu.gif" width="30%" height="30%" /><img src="images/NewSideMenu.gif" width="30%" height="30%" /><img src="images/sideMenuNewDark.gif" width="30%" height="30%" />
 </p>
 
 ## Alerts
