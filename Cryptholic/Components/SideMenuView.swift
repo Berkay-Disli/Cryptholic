@@ -97,6 +97,7 @@ struct SideMenuView: View {
                 Button(role: .destructive) {
                     authVM.signOut()
                     navVM.closeSideMenu()
+                    navVM.enableOnboarding()
                 } label: {
                     Text("Sign Out")
                 }

@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @EnvironmentObject var authVM: AuthenticationViewModel
+    @EnvironmentObject var navVM: NavigationViewModel
     
     var body: some View {
         if authVM.userSession == nil {
             SignIn()
                 .transition(AnyTransition.opacity.animation(.easeInOut))
         } else {
-            TabManager()
-                .transition(AnyTransition.opacity.animation(.easeInOut))
+            if navVM.onboarding {
+                OnboardingView()
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
+            } else {
+                TabManager()
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
+            }
         }
     }
 }

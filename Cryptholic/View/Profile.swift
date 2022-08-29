@@ -169,6 +169,7 @@ struct Profile: View {
                         .alert("Signing Out", isPresented: $showSignOutAlert) {
                             Button(role: .destructive) {
                                 authVM.signOut()
+                                navVM.enableOnboarding()
                             } label: {
                                 Text("Sign Out")
                             }
@@ -177,6 +178,7 @@ struct Profile: View {
                         }
                         .alert(authVM.alertMessage, isPresented: $authVM.showAlert) {}
 
+                        
                         
 
                     }

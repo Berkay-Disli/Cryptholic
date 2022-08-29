@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignIn: View {
     @EnvironmentObject var authVM: AuthenticationViewModel
+    @EnvironmentObject var navVM: NavigationViewModel
     @Environment(\.colorScheme) var colorScheme
     @State private var email = ""
     @State private var password = ""
@@ -86,6 +87,7 @@ struct SignIn: View {
                 .padding(.bottom)
             }
             .background(Color("bg"))
+            
         }
     }
 }

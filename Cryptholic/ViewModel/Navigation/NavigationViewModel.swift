@@ -12,6 +12,7 @@ class NavigationViewModel: ObservableObject {
     @Published var showTabBar = true
     @Published var tabSelection: Tabs = .home
     @Published var sideMenuActive = false
+    @Published var onboarding = true
     
     init() {
         
@@ -38,5 +39,11 @@ class NavigationViewModel: ObservableObject {
         self.sideMenuActive = false
     }
     
+    func disableOnboarding() {
+        onboarding = false
+    }
+    func enableOnboarding() {
+        onboarding = true
+    }
     
 }
