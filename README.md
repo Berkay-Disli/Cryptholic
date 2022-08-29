@@ -53,6 +53,20 @@
 - Fully Customisable LineChart with Multiple **Line Color** Options and **Grid Feature**
 - Add Coins to Your **Favourites** and Track Them From Your Watchlist
 
+## Side Menu - New Designs
+<br />
+<p align="middle">
+    <img src="images/SideMenu.gif" width="30%" height="30%" /><img src="images/NewSideMenu.gif" width="30%" height="30%" />
+</p>
+
+## Alerts
+<p align="middle">
+    <img src="images/alertAuth.gif" width="30%" height="30%" /><img src="images/alertSideMenu.gif" width="30%" height="30%" />
+</p>
+
+- Alert Messages From FirebaseAuth
+- Sign Out Button Alerts to Prevent Logging Out by Mistake
+
 
 ## Dark Mode 
 <p align="middle">
@@ -60,17 +74,12 @@
 </p>
 <br />
 <p align="left">
-    <img src="images/DarkMode.gif" width="30%" height="30%" />
+    <img src="images/DarkMode.gif" width="30%" height="30%" /><img src="images/sideMenuNewDark.gif" width="30%" height="30%" />
 </p>
 
 - Dark Mode Matches Your System Scheme
 - UI is Re-Designed for Dark Scheme
-
-## Side Menu - New Design
-<br />
-<p align="middle">
-    <img src="images/SideMenu.gif" width="30%" height="30%" /><img src="images/NewSideMenu.gif" width="30%" height="30%" />
-</p>
+- Side Menu is Now Transparent
 
 
 
