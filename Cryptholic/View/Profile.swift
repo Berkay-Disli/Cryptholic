@@ -14,6 +14,7 @@ struct Profile: View {
     @State private var notificationsEnabled = true
     @Environment(\.colorScheme) var colorScheme
     @State private var showSignOutAlert = false
+    @State private var showAllFavs = false
     
     var body: some View {
         NavigationView {
@@ -59,15 +60,47 @@ struct Profile: View {
                         // Favourites, only first 3 item.
                         if !authVM.filtered.isEmpty {
                             ScrollView {
-                                ForEach(authVM.filtered, id:\.self) { coin in
-                                    NavigationLink {
-                                        CoinDetails(coinVM: coinsVM, coin: coin)
-                                    } label: {
-                                        CoinListCell(showGraph: false, image: coin.icon, name: coin.name, symbol: coin.symbol, price: coin.price, dailyChange: coin.priceChange1d ?? 0)
-                                            .padding(.bottom, 14)
+                                if showAllFavs {
+                                    ForEach(authVM.filtered, id:\.self) { coin in
+                                        NavigationLink {
+                                            CoinDetails(coinVM: coinsVM, coin: coin)
+                                        } label: {
+                                            CoinListCell(showGraph: false, image: coin.icon, name: coin.name, symbol: coin.symbol, price: coin.price, dailyChange: coin.priceChange1d ?? 0)
+                                                .padding(.bottom, 14)
+                                        }
+                                    }
+                                    .animation(.easeInOut, value: authVM.filtered)
+                                    .transition(AnyTransition.opacity.animation(.easeInOut))
+                                    
+                                } else {
+                                    ForEach(authVM.filtered.prefix(3), id:\.self) { coin in
+                                        NavigationLink {
+                                            CoinDetails(coinVM: coinsVM, coin: coin)
+                                        } label: {
+                                            CoinListCell(showGraph: false, image: coin.icon, name: coin.name, symbol: coin.symbol, price: coin.price, dailyChange: coin.priceChange1d ?? 0)
+                                                .padding(.bottom, 14)
+                                        }
+                                    }
+                                    .animation(.easeInOut, value: authVM.filtered)
+                                    .transition(AnyTransition.opacity.animation(.easeInOut))
+                                    
+                                    if authVM.filtered.prefix(3).count != authVM.filtered.count {
+                                        let itemsLeft = authVM.filtered.count - authVM.filtered.prefix(3).count
+                                        Text("\(itemsLeft) more coins")
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .font(.footnote)
+                                            .foregroundColor(.gray)
+                                            .padding(.top, -8)
                                     }
                                 }
-                                .animation(.easeInOut, value: authVM.filtered)
+                                
+                                Button {
+                                    // remove prefix
+                                    showAllFavs.toggle()
+                                } label: {
+                                    BigButton(title: showAllFavs ? "Shorten List":"See All", bgColor: Color("lightGray"), textColor: Color("black"))
+                                        //.transition(AnyTransition.slide.animation(.easeInOut))
+                                }
                             }
                         } else {
                             VStack(spacing: 4) {
@@ -82,12 +115,6 @@ struct Profile: View {
                             .fontWeight(.medium)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(.bottom)
-                        }
-                        
-                        Button {
-                            // navigate to favourites
-                        } label: {
-                            BigButton(title: "See All", bgColor: Color("lightGray"), textColor: Color("black"))
                         }
 
                     }

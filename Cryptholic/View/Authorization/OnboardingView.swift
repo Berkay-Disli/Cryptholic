@@ -12,6 +12,7 @@ struct OnboardingView: View {
     @EnvironmentObject var authVM: AuthenticationViewModel
     @State private var showText = false
     @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack {
             Color("white").ignoresSafeArea()

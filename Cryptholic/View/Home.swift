@@ -26,7 +26,7 @@ struct Home: View {
                         VStack {
                             if !authVM.filtered.isEmpty {
                                 ScrollView {
-                                    ForEach(authVM.filtered, id:\.self) { coin in
+                                    ForEach(authVM.filtered.prefix(3), id:\.self) { coin in
                                         NavigationLink {
                                             CoinDetails(coinVM: coinsVM, coin: coin)
                                         } label: {
@@ -35,6 +35,16 @@ struct Home: View {
                                         }
                                     }
                                     .animation(.easeInOut, value: authVM.filtered)
+                                    .transition(AnyTransition.opacity.animation(.easeInOut))
+                                    
+                                    if authVM.filtered.prefix(3).count != authVM.filtered.count {
+                                        let itemsLeft = authVM.filtered.count - authVM.filtered.prefix(3).count
+                                        Text("\(itemsLeft) more coins")
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .font(.footnote)
+                                            .foregroundColor(.gray)
+                                            .padding(.top, -8)
+                                    }
                                 }
                             } else {
                                 VStack(spacing: 4) {
@@ -51,6 +61,7 @@ struct Home: View {
                                 .font(.title3)
                                 .fontWeight(.medium)
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .transition(AnyTransition.opacity.animation(.easeInOut))
                             }
                         }
                         .padding(.horizontal)
