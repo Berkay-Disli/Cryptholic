@@ -93,10 +93,16 @@ class AuthenticationViewModel: ObservableObject {
             guard let user = result?.user else { return }
             self.userSession = user
             
-            let userData = ["username": user.displayName ?? "No Username", "email": user.email ?? "No E-Mail"] as [String:Any]
-            Firestore.firestore().collection("users").document(user.uid).setData(userData) { error in
-                if let error { print(error.localizedDescription)} else {
-                    print("User info saved.")
+            Firestore.firestore().collection("users").document(user.uid).getDocument { _, error in
+                if error == nil {
+                    print("User already exists.")
+                } else {
+                    let userData = ["username": user.displayName ?? "No Username", "email": user.email ?? "No E-Mail"] as [String:Any]
+                    Firestore.firestore().collection("users").document(user.uid).setData(userData) { error in
+                        if let error { print(error.localizedDescription)} else {
+                            print("User info saved.")
+                        }
+                    }
                 }
             }
             
