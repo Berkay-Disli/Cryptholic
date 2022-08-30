@@ -65,8 +65,9 @@ struct SideMenuView: View {
             .frame(maxWidth: .infinity)
             .padding(.leading)
             
-            NavigationLink {
-                Profile(coinsVM: coinsVM)
+            Button {
+                // navVM enable toProfilePage
+                navVM.goToProfileView()
             } label: {
                 SideMenuBigButton(bgColor: Color("lightGray"), text: "Profile")
             }

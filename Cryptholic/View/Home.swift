@@ -177,6 +177,18 @@ struct Home: View {
             }
             onRefresh: {
                 coinsVM.getData()
+                authVM.getUserInfo { success in
+                    if success {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            var filteredArray = [Coin]()
+                            for coinId in authVM.favouriteCoins {
+                                let result = coinsVM.coins.coins.filter { $0.id == coinId }
+                                filteredArray.append(result.first!)
+                            }
+                            self.authVM.filtered = filteredArray
+                        }
+                    }
+                }
             }
             .edgesIgnoringSafeArea(.bottom) // Optional
             .navigationTitle("Home")

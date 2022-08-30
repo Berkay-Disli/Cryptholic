@@ -70,7 +70,6 @@ struct Profile: View {
                                         }
                                     }
                                     .animation(.easeInOut, value: authVM.filtered)
-                                    .transition(AnyTransition.opacity.animation(.easeInOut))
                                     
                                 } else {
                                     ForEach(authVM.filtered.prefix(3), id:\.self) { coin in
@@ -82,7 +81,6 @@ struct Profile: View {
                                         }
                                     }
                                     .animation(.easeInOut, value: authVM.filtered)
-                                    .transition(AnyTransition.opacity.animation(.easeInOut))
                                     
                                     if authVM.filtered.prefix(3).count != authVM.filtered.count {
                                         let itemsLeft = authVM.filtered.count - authVM.filtered.prefix(3).count
@@ -99,7 +97,6 @@ struct Profile: View {
                                     showAllFavs.toggle()
                                 } label: {
                                     BigButton(title: showAllFavs ? "Shorten List":"See All", bgColor: Color("lightGray"), textColor: Color("black"))
-                                        //.transition(AnyTransition.slide.animation(.easeInOut))
                                 }
                             }
                         } else {

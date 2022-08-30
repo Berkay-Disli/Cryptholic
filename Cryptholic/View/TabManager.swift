@@ -89,7 +89,11 @@ struct TabManager: View {
                             var filteredArray = [Coin]()
                             for coinId in authVM.favouriteCoins {
                                 let result = coinsVM.coins.coins.filter { $0.id == coinId }
-                                filteredArray.append(result.first!)
+                                guard let firstItem = result.first else {
+                                    print("ERROR: TabManager->onAppear")
+                                    return
+                                }
+                                filteredArray.append(firstItem)
                             }
                             self.authVM.filtered = filteredArray
                         }

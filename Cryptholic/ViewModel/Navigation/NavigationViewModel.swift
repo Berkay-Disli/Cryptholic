@@ -47,4 +47,7 @@ class NavigationViewModel: ObservableObject {
     func enableOnboarding() {
         onboarding = true
     }
+    func goToProfileView() {
+        tabSelection = .profile
+    }
 }
