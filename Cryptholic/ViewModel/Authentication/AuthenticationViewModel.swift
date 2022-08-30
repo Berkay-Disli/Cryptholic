@@ -16,6 +16,8 @@ class AuthenticationViewModel: ObservableObject {
     @Published var filtered = [Coin]()
     @Published var alertMessage = ""
     @Published var showAlert = false
+    @Published var tempUserName = ""
+    @Published var firebaseSignUpUsed = false
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -106,7 +108,7 @@ class AuthenticationViewModel: ObservableObject {
                 }
             }
             
-            self.getUserInfo { _ in            }
+            self.getUserInfo { _ in  }
             
             }
         }
@@ -162,6 +164,10 @@ class AuthenticationViewModel: ObservableObject {
                 print("Data is updated.")
             }
         }
+    }
+    
+    func setTempUsernme(username: String) {
+        tempUserName = username
     }
     
 }

@@ -55,6 +55,8 @@ struct SignUp: View {
             VStack {
                 Button {
                     if !name.isEmpty && !email.isEmpty && !password.isEmpty {
+                        authVM.setTempUsernme(username: name)
+                        authVM.firebaseSignUpUsed = true
                         authVM.createAccount(name: name, email: email, password: password)
                     }
                 } label: {

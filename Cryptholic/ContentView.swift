@@ -15,13 +15,16 @@ struct ContentView: View {
         if authVM.userSession == nil {
             SignIn()
                 .transition(AnyTransition.opacity.animation(.easeInOut))
+                .if(navVM.darkModeEnabled) { $0.preferredColorScheme(.dark) }
         } else {
             if navVM.onboarding {
                 OnboardingView()
                     .transition(AnyTransition.opacity.animation(.easeInOut))
+                    .if(navVM.darkModeEnabled) { $0.preferredColorScheme(.dark) }
             } else {
                 TabManager()
                     .transition(AnyTransition.opacity.animation(.easeInOut))
+                    .if(navVM.darkModeEnabled) { $0.preferredColorScheme(.dark) }
             }
         }
     }

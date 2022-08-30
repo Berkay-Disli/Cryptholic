@@ -154,6 +154,9 @@ struct Profile: View {
                         .foregroundColor(Color("black"))
                         .frame(height: 60)
                         
+                        // System Theme
+                        Toggle("Dark Mode", isOn: $navVM.darkModeEnabled)
+                        
                         // Notification
                         Toggle("Notifications", isOn: $notificationsEnabled)
                         .foregroundColor(Color("black"))

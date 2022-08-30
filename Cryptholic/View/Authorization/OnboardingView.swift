@@ -21,7 +21,7 @@ struct OnboardingView: View {
                 .ignoresSafeArea()
             if showText {
                 VStack(alignment: .leading) {
-                    Text("Hi \(authVM.userSession?.displayName ?? "User")!")
+                    Text("Hi \(authVM.firebaseSignUpUsed ? authVM.tempUserName:authVM.userSession?.displayName ?? "User")!")
                     Text("Welcome back.")
                 }
                 .font(.largeTitle)
@@ -42,6 +42,9 @@ struct OnboardingView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 navVM.disableOnboarding()
             }
+        }
+        .onDisappear {
+            authVM.setTempUsernme(username: "")
         }
     }
 }

@@ -98,6 +98,9 @@ struct TabManager: View {
                 navVM.tabSelection = .home
             }
             .toolbar(.hidden)
+            .onDisappear {
+                authVM.firebaseSignUpUsed = false
+            }
         }
     }
 }

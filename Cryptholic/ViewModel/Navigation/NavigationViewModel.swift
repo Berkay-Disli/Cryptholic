@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class NavigationViewModel: ObservableObject {
     
@@ -13,6 +14,7 @@ class NavigationViewModel: ObservableObject {
     @Published var tabSelection: Tabs = .home
     @Published var sideMenuActive = false
     @Published var onboarding = true
+    @Published var darkModeEnabled = false
     
     init() {
         
@@ -45,5 +47,4 @@ class NavigationViewModel: ObservableObject {
     func enableOnboarding() {
         onboarding = true
     }
-    
 }
