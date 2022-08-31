@@ -67,6 +67,9 @@ struct SideMenuView: View {
             
             Button {
                 // navVM enable toProfilePage
+                withAnimation(.easeInOut) {
+                    navVM.closeSideMenu()
+                }
                 navVM.goToProfileView()
             } label: {
                 SideMenuBigButton(bgColor: Color("lightGray"), text: "Profile")

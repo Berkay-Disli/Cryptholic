@@ -221,14 +221,7 @@ struct Profile: View {
             .onAppear {
                 authVM.getUserInfo { success in
                     if success {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            var filteredArray = [Coin]()
-                            for coinId in authVM.favouriteCoins {
-                                let result = coinsVM.coins.coins.filter { $0.id == coinId }
-                                filteredArray.append(result.first!)
-                            }
-                            self.authVM.filtered = filteredArray
-                        }
+                        setFilteredArray()
                     }
                 }
                 navVM.openTabBar()
@@ -251,6 +244,24 @@ struct Profile: View {
                     Image(systemName: "bell")
                 }
             }
+        }
+    }
+    
+    
+    
+    
+    func setFilteredArray() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            var filteredArray = [Coin]()
+            for coinId in authVM.favouriteCoins {
+                let result = coinsVM.coins.coins.filter { $0.id == coinId }
+                guard let firstItem = result.first else {
+                    print("ERROR: TabManager->onAppear")
+                    return
+                }
+                filteredArray.append(firstItem)
+            }
+            self.authVM.filtered = filteredArray
         }
     }
 }

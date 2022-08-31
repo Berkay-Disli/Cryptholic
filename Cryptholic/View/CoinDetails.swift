@@ -17,6 +17,7 @@ struct CoinDetails: View {
     @ObservedObject var coinVM: CoinsViewModel
     let coin: Coin
     @State private var gridEnabled = false
+    @State private var notificationsEnabled = false
     
     var body: some View {
         VStack {
@@ -35,17 +36,20 @@ struct CoinDetails: View {
                 
                 // MARK: Price and Buttons
                 HStack {
-                    Text("USD \(Double(round(100 * coin.price) / 100).formatted())")
+                    Text("USD \(Double(round(10000 * coin.price) / 10000).formatted())")
                         .font(.system(size: 32))
                         .fontWeight(.medium)
                         .foregroundColor(Color("black"))
                     Spacer()
+                    
                     //Buttons
                     HStack {
                         Button {
-                            // notify me?
+                            withAnimation(.easeInOut) {
+                                notificationsEnabled.toggle()
+                            }
                         } label: {
-                            IconButton(iconName: "bell")
+                            IconButton(iconName: "bell", enabledIconName: "bell.fill", notificationsEnabled: $notificationsEnabled)
                         }
                         
                         Menu {
@@ -61,7 +65,7 @@ struct CoinDetails: View {
                             }
                             Toggle("Grid", isOn: $gridEnabled)
                         } label: {
-                            IconButton(iconName: "slider.vertical.3")
+                            IconButton(iconName: "slider.vertical.3", enabledIconName: "slider.vertical.3", notificationsEnabled: .constant(false))
                         }
                     }
                 }
@@ -71,7 +75,9 @@ struct CoinDetails: View {
                     HStack{
                         Image(systemName: priceRatio1d >= 0 ? "arrow.up.right":"arrow.down.right")
                         // Some math rocks in here :)
-                        Text("\(String(format: "%.2f", (coin.price * priceRatio1d / 100)))")
+                        if abs(coin.price * priceRatio1d / 100) >= 0.0001 {
+                            Text("\(String(format: "%.4f", (coin.price * priceRatio1d / 100)))")
+                        }
                         Text("(\(priceRatio1d.formatted())%)")
                     }
                     .fontWeight(.medium)

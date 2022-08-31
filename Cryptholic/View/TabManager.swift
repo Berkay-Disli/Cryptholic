@@ -85,18 +85,7 @@ struct TabManager: View {
             .onAppear {
                 authVM.getUserInfo { success in
                     if success {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            var filteredArray = [Coin]()
-                            for coinId in authVM.favouriteCoins {
-                                let result = coinsVM.coins.coins.filter { $0.id == coinId }
-                                guard let firstItem = result.first else {
-                                    print("ERROR: TabManager->onAppear")
-                                    return
-                                }
-                                filteredArray.append(firstItem)
-                            }
-                            self.authVM.filtered = filteredArray
-                        }
+                        setFilteredArray()
                     }
                 }
                 navVM.tabSelection = .home
@@ -105,6 +94,23 @@ struct TabManager: View {
             .onDisappear {
                 authVM.firebaseSignUpUsed = false
             }
+        }
+    }
+    
+    
+    
+    func setFilteredArray() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            var filteredArray = [Coin]()
+            for coinId in authVM.favouriteCoins {
+                let result = coinsVM.coins.coins.filter { $0.id == coinId }
+                guard let firstItem = result.first else {
+                    print("ERROR: TabManager->onAppear")
+                    return
+                }
+                filteredArray.append(firstItem)
+            }
+            self.authVM.filtered = filteredArray
         }
     }
 }
